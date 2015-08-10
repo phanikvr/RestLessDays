@@ -1,0 +1,199 @@
+/***********
+ * FILE: style.css
+ */
+
+body {
+  padding: 0;
+  margin: 0;
+  vertical-align: top;
+  background: #FFFFFF;
+  font-family: verdana;
+  height:100%;
+}
+
+#canvas_set {
+	background-color: green;
+}
+
+.dark_green {
+  color: #21600e;
+}
+
+.navy {
+  color: #374C92;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.app_title {
+  float: left;
+  margin-top: 14px;
+  color: #21600e;
+}
+
+#poster {
+  background: url("/images/therestlessdays_intro.png") top center;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+}
+
+#char_phil {
+  width: 120px;
+  margin-left: 20px;
+  margin-top: 20px;
+  display: block;
+}
+
+#char_ledge {
+  width: 120px;
+  margin-left: 500px;
+  margin-top: -200px;
+  display: block;
+}
+
+.body_game_bg {
+  background: #E8EBF4;
+  border-width: 20px 0px 0px 0px;
+  border-color: grey;
+  border-style: solid;
+}
+
+.body_game_bg #breadcrumbs {
+  font-size: 10px;
+}
+
+.review_score {
+  font-size: 20px;
+  color: #8ED465;
+}
+
+.alert {
+  color:red;
+}
+
+.film_reviews.column h1 {
+  padding-bottom: 20px;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #374C92;
+  display: block;
+  margin: 0;
+  padding: 0px;
+}
+
+h2 {
+  font-size: 15px;
+  font-weight: bold;
+  color: #374C92;
+  display: block;
+  margin: 0;
+  padding: 0px;
+  padding-bottom: 10px;
+}
+
+#tm_header_symbol{
+  color: #358901;
+}
+
+#header {
+  padding-top: 20px;
+}
+
+#logo {
+  padding-left: 20px;
+}
+
+.logo_small_text {
+  color: #21600e;
+  padding-left:20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.text_coming_soon {
+  background-color: #99D884;
+  border-width: 2px 0px 2px 0px; 
+  border-style: dashed; 
+  width: 100%; 
+  text-align: center; 
+  font-family: verdana; 
+  color: #113B69; 
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+.column {
+  float: left;
+  width: 48%;
+  padding-left: 20px;
+  font-size: 10px;
+  vertical-align: top;
+}
+
+.poster {
+  padding-top: 20px;
+  margin-right: 15px;
+  width: 200px;
+  float: left;
+  font-size: 10px;
+}
+
+.current {
+  border: 4px solid red;
+  padding: 10px;
+}
+
+.game_start_link {
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.game_coming_soon {
+  color: orange;
+  font-weight: none;
+  font-size: 20px;
+}
+
+#game_start_button {
+  margin-top: 55px;
+}
+
+#arrow_controls {
+  margin-top: 100px;
+  margin-left: 30px;
+}
+
+#button_a {
+  margin-top: 220px;
+  margin-left: 150px;
+}
+
+#button_b {
+  margin-top: 0px;
+  margin-left: 250px;
+}
+
+#breadcrumbs {
+  padding-left: 20px;
+}
+
+.poster img {
+  border: 2px solid #75726C;
+}
+
+.main_review_poster {
+  padding-right: 10px;
+}
+
+.short_desc {
+  overflow: true;
+}
