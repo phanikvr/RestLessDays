@@ -10,24 +10,143 @@
 
 var dir_chars = './images/chars/';
 
-function changeImgSrc(char, command, delay) {	
-  setTimeout(function () {
-	char.src = dir_chars + char.id + '/' + command + '.png';
-  }, delay);
-}
-
 //ALERT: You have to put global variables outside of Jquery Tags for them
 //to work.
 var canvas, ctx;
 var keys_pressed = [];
 var i = 0;
 var global_time = 0;
+var phil;
 
-var x = 75;
-var y = 55;
-var w = 35;
-var h = 50;
-var image_state = 'front-standing-mouth-closed';
+//var image_state = 'left-facing-standing-mouth-closed';
+
+/* OBJECT CONSTRUCTION */
+function character(name) {
+  this.x = 75;
+  this.y = 55;
+  this.w = 35;
+  this.h = 50;
+  this.name = name;
+  this.img = '';
+  this.image_state = 'front-standing-mouth-closed';
+ 
+  this.img = new Image();
+  this.img.src = dir_chars + this.name + '/' + this.image_state + '.png';
+}
+
+character.prototype.drawImage = function() {
+  ctx.drawImage(this.img, this.x, this.y, this.w, this.h);	
+}
+character.prototype.charCommands = function(ctx, config) {  
+  $.each(config, function( command, params ) {
+    str = "this."+ command + "(ctx," + params.join(",") + ");";
+  });
+  eval(str);
+}
+character.prototype.move = function(ctx, direction, delay){
+
+  global_time += delay;  
+  stationary = 0;
+  
+  var char = this;
+  
+  var callMethod = function () {
+    ctx.clearRect(char.x,char.y,char.w,char.h);
+
+	if(['left','right'].indexOf(direction) != -1) { 
+			    
+	  if(direction == 'left') {		  
+	    if(char.image_state.indexOf('right') == -1) {
+		  char.image_state = 'right-facing-standing-mouth-closed';
+		  stationary = 1;
+		  
+		} else {
+			
+		  if(char.image_state.indexOf('right-walking-left-foot') == -1) {
+		    char.image_state = 'right-walking-left-foot';
+		  } else {
+		    char.image_state = 'right-walking-right-foot';
+		  }
+		}
+		op = "-";
+	  }
+	  
+	  if(direction == 'right') {
+	    if(char.image_state.indexOf('left') == -1) {
+		  char.image_state = 'left-facing-standing-mouth-closed';
+		  stationary = 1;
+		} else {
+		  if(char.image_state.indexOf('left-walking-left-foot') == -1) {
+		    char.image_state = 'left-walking-left-foot';
+		  } else {
+			char.image_state = 'left-walking-right-foot';
+		  }
+		}
+		op = "+";
+	  }
+	   
+	  if (!stationary) {
+	    eval("char.x = char.x " + op + " 10");
+	  }
+	} else if(['up','down'].indexOf(direction) != -1) {
+	  op = "+";
+	  if(direction == 'up') {
+	    if(char.image_state.indexOf('back') == -1) {
+		  char.image_state = 'back-standing';
+		  stationary = 1;
+		} else {
+		  if(char.image_state.indexOf('back-walking-left-foot') == -1) {
+		    char.image_state = 'back-walking-left-foot';
+		  } else {
+			char.image_state = 'back-walking-right-foot';
+		  }
+		}
+		op = "-";
+	  }
+	  if(direction == 'down') {
+	    if(char.image_state.indexOf('front') == -1) {
+		  char.image_state = 'front-standing-mouth-closed';
+		  stationary = 1;
+		} else {
+		  if(char.image_state.indexOf('front-walking-right-foot') == -1) {
+		    char.image_state = 'front-walking-right-foot';
+		  } else {
+			char.image_state = 'front-walking-left-foot';
+		  }
+		}
+		op = "+";
+	  }
+	  if (!stationary) {
+	    eval("char.y = char.y " + op + " 10");
+	  }
+	}
+
+	char.draw(ctx);
+	
+  };
+  
+  setTimeout(callMethod, global_time);
+  
+}
+
+character.prototype.talk = function(ctx, config) {
+  if(this.image_state.indexOf('front-standing-mouth-closed') == -1) {
+	this.image_state = 'front-standing-mouth-closed';  
+  } else {
+    this.image_state = 'front-standing-mouth-open';	  
+  }
+  this.draw(ctx);
+}
+character.prototype.draw = function(ctx) {
+  this.changeImgSrc();
+  ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+}
+character.prototype.changeImgSrc = function() {
+  //global_time += delay;	
+  //setTimeout(function () {  
+  this.img.src = dir_chars + this.name + '/' + this.image_state + '.png';
+  //}, global_time);
+}
 
 $(document).ready(function() {
 	
@@ -42,14 +161,7 @@ $(document).ready(function() {
   mySound.play();
   
   // Useful Vars
-  var str_loc = new String(window.location.href);
-  
-  charFrontTalking('phil');
-  charFrontWalking('phil');
-  //charRightWalking('phil');
-  charFrontTalking('ledge');
-  charFrontWalking('ledge');
-  */
+  // var str_loc = new String(window.location.href);
 	
   /* MUSIC Config */
   /*
@@ -62,71 +174,17 @@ $(document).ready(function() {
   canvas = document.getElementById('canvas_set');
   ctx = canvas.getContext("2d");
   
+  phil = new character('Phil');
+  phil.drawImage();
+  
+  /*
   characters['phil'] = new Image();
   characters['phil'].id = 'phil';
+  characters['phil'].image_state = 'front-standing-mouth-closed';
   characters['phil'].src = './images/chars/phil/' + image_state + '.png';
   characters['phil'].onload = function () {
 	  ctx.drawImage(characters['phil'], x, y, w, h);  
   }
-  
-  //ctx.drawImage(img, x, y, w, h);
-  
-  //changeImgSrc(char1_img, 'front-standing-mouth-closed', 500);
-  //changeImgSrc(char1_img, 'front-standing-mouth-open', 1000);
-  
-  //changeImgSrc(char1_img, 'front-standing-mouth-closed',2000);
-  //changeImgSrc(char1_img, 'front-standing-mouth-open', 3000);
-  
-  //draw();
-  /*
-  move(1000);
-  move(2000);
-  move(3000);
-  timeout = 4000;
-  //Make Character Talks
-  changeImgSrc(characters['phil'], 'front-standing-mouth-open', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-closed', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-open', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-closed', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-open', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-closed', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-open', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-closed', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-open', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-closed', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-open', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-closed', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-open', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-closed', timeout += 2000);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-open', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-closed', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-open', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-closed', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-open', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-closed', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-open', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-closed', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-open', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-closed', timeout += 100);
-  changeImgSrc(characters['phil'], 'front-standing-mouth-open', timeout += 100);
-  */
-
-  /*
-  // How to call a function from a string
-  function command(test){
-    alert(test);
-  }
-  target = 'command';
-  eval("command('sdfsdfsdfsdffs');");
-  */
-  
-  // Array Like Objects
-  /*
-  var commands = {'test':'direction', 'speed':'fast'};
-  alert(commands.test);  
-  $.each(commands, function( key, value ) {
-    alert( key + ": " + value );
-  });
   */
  
 });
@@ -137,31 +195,95 @@ function charCommands(config) {
     });
   }
 
+function talk(config) {
+  if(characters['phil'].image_state.indexOf('front-standing-mouth-closed') == -1) {
+	characters['phil'].image_state = 'front-standing-mouth-closed';  
+  } else {
+    characters['phil'].image_state = 'front-standing-mouth-open';	  
+  }
+  draw();
+}
+
 function move(direction, delay){
   global_time += delay;
+  
+  stationary = 0;
 
   setTimeout(function () {
     ctx.clearRect(x,y,w,h);
 	if(['left','right'].indexOf(direction) != -1) {
-	  op = "+";
+	 
 	  if(direction == 'left') {
+	    if(characters['phil'].image_state.indexOf('right') == -1) {
+	      characters['phil'].image_state = 'right-facing-standing-mouth-closed';
+	      stationary = 1;
+	    } else {
+	      if(characters['phil'].image_state.indexOf('right-walking-left-foot') == -1) {
+	        characters['phil'].image_state = 'right-walking-left-foot';
+	      } else {
+	    	characters['phil'].image_state = 'right-walking-right-foot';
+	      }
+	    }
 	    op = "-";
 	  }
-	  eval("x = x " + op + " 10");
+	  
+	  if(direction == 'right') {
+		if(characters['phil'].image_state.indexOf('left') == -1) {
+		  characters['phil'].image_state = 'left-facing-standing-mouth-closed';
+		  stationary = 1;
+		} else {
+	      if(characters['phil'].image_state.indexOf('left-walking-left-foot') == -1) {
+		    characters['phil'].image_state = 'left-walking-left-foot';
+		  } else {
+		    characters['phil'].image_state = 'left-walking-right-foot';
+		  }
+		}
+		op = "+";
+	  }
+	  if (!stationary) {
+	    eval("x = x " + op + " 10");
+	  }
 	} else if(['up','down'].indexOf(direction) != -1) {
 	  op = "+";
 	  if(direction == 'up') {
+		if(characters['phil'].image_state.indexOf('back') == -1) {
+		  characters['phil'].image_state = 'back-standing';
+		  stationary = 1;
+		} else {
+		  if(characters['phil'].image_state.indexOf('back-walking-left-foot') == -1) {
+		    characters['phil'].image_state = 'back-walking-left-foot';
+		  } else {
+		    characters['phil'].image_state = 'back-walking-right-foot';
+		  }
+		}
 	    op = "-";
 	  }
-	  eval("y = y " + op + " 10");
+	  if(direction == 'down') {
+		if(characters['phil'].image_state.indexOf('front') == -1) {
+		  characters['phil'].image_state = 'front-standing-mouth-closed';
+		  stationary = 1;
+		} else {
+		  if(characters['phil'].image_state.indexOf('front-walking-right-foot') == -1) {
+		    characters['phil'].image_state = 'front-walking-right-foot';
+		  } else {
+		    characters['phil'].image_state = 'front-walking-left-foot';
+		  }
+		}
+	    op = "+";
+	  }
+	  if (!stationary) {
+	    eval("y = y " + op + " 10");
+	  }
 	}
 	draw();
   }, global_time);
 }
 
 function draw() {
-  //changeImgSrc('phil', 'front-standing-mouth-closed', 0);
-  ctx.drawImage(characters['phil'], x, y, w, h);		
+  //changeImgSrc(characters['phil'], 0);
+  ctx.drawImage(characters['phil'], x, y, w, h);
+  ctx.clearRect(x,y,w,h);
+  changeImgSrc(characters['phil'], 0);
 }
 
 var characters = new Array();
@@ -176,23 +298,23 @@ $(document).keydown(function(e) {
 	
     switch(e.which) {
         case 37: // left
-        	charCommands({'move':["'left'",500]});
+        	phil.charCommands(ctx, {'move':["'left'",10]});
         break;
 
         case 38: // up
-        	charCommands({'move':["'up'",500]});
+        	phil.charCommands(ctx, {'move':["'up'",10]});
         break;
 
         case 39: // right
-        	charCommands({'move':["'right'",500]});
+        	phil.charCommands(ctx, {'move':["'right'",10]});
         break;
 
-        case 40: // downs
-        	charCommands({'move':["'down'",500]});
+        case 40: // down
+        	phil.charCommands(ctx, {'move':["'down'",10]});
         break;
         
         case 32: // space
-        	// charCommands({'move':["'left'",500]});
+        	phil.charCommands(ctx, {'talk':[]});
         break;
 
         default: return; // exit this handler for other keys
@@ -202,73 +324,3 @@ $(document).keydown(function(e) {
     //alert(keys_pressed);
     
 });
-
-
-
-function charFrontTalking(char_a) {
-
-  // CHAR Talking
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 1000);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 1000);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 1000);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-closed.png', 100);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-standing-mouth-open.png', 100);
-
-}
-
-function charFrontWalking(char_a) {
-  
-  //Char Walking
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-left-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-right-foot.png', 500);
-  $('#char_'+char_a).css('margin-top', '30px');
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-left-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-right-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-left-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-right-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-left-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-right-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-left-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-right-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-left-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-right-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-left-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-right-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-left-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-right-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-left-foot.png', 500);
-  changeImgSrc('char_'+char_a, './images/chars/' + char_a + '/front-walking-right-foot.png', 500);
-
-}
