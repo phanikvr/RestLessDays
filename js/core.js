@@ -157,13 +157,15 @@ character.prototype.talk = function(ctx) {
   }
   
   // TEST IMG-OVER-IMG
+  /*
   ctx.globalCompositeOperation = 'destination-over';
   ctx.clearRect(mimi.x,mimi.y,mimi.w,mimi.h);
   mimi.drawImage();
   this.draw(ctx);
   ctx.globalCompositeOperation = 'source-over';
+  */
   
-  // this.draw(ctx);
+  this.draw(ctx);
   
 }
 character.prototype.sit = function(ctx) {
@@ -201,9 +203,9 @@ function createChars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   //TEST IMG-OVER-IMG
-  ctx.globalCompositeOperation = 'destination-over';
-  
-  mimi = new character('Mimi', 75, 400, 90, 120, 'front-standing-mouth-closed');
+  //ctx.globalCompositeOperation = 'destination-over';
+  //75, 400
+  mimi = new character('Mimi', 300, 50, 90, 120, 'front-standing-mouth-closed');
   mimi.drawImage();
  
   phil = new character('Phil', 75, 320, 90, 120, 'left-sitting-mouth-closed');
