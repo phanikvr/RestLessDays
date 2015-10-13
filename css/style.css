@@ -11,8 +11,14 @@ body {
   height:100%;
 }
 
-#canvas_set {
-	background-color: green;
+#canvas_set, #controls {
+	margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#controls {
+  width: 500px;
 }
 
 .dark_green {
@@ -42,19 +48,21 @@ body {
   margin-top: 10px;
 }
 
+/*
 #char_phil {
-  width: 120px;
+  width: 170px;
   margin-left: 20px;
   margin-top: 20px;
   display: block;
 }
 
 #char_ledge {
-  width: 120px;
+  width: 170px;
   margin-left: 500px;
   margin-top: -200px;
   display: block;
 }
+*/
 
 .body_game_bg {
   background: #E8EBF4;
