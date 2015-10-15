@@ -217,8 +217,8 @@ function firstScene() {
   mimi = new object('Mimi', 'character', 308, -60, 80, 114, 'front-standing-mouth-closed');
   mimi.drawImage();
   
-  // roy = new object('Roy', 'character', 308, 0, 80, 114, 'front-standing-mouth-closed');
-  // roy.drawImage();
+  roy = new object('Roy', 'character', 308, -80, 80, 114, 'front-standing-mouth-closed');
+  roy.drawImage();
   
   ctx.globalCompositeOperation = 'destination-over';
   
@@ -307,6 +307,8 @@ $(document).keydown(function(e) {
   }
 
 	i++;
+
+  // alert(e.which);
 					
   switch(e.which) {
     case 37: // left arrow - Char1 left
@@ -361,6 +363,30 @@ $(document).keydown(function(e) {
     
     case 20: // Caps Lock key - Char2 sit
     	mimi.charCommands(ctx, {'sit':[]});
+      break;
+
+    case 89: // y key - Char2 up
+      roy.charCommands(ctx, {'move':["'up'"]});
+      break;
+    
+    case 72: // h key - Char2 down
+      roy.charCommands(ctx, {'move':["'down'"]});
+      break;
+
+    case 71: // g key - Char2 left
+      roy.charCommands(ctx, {'move':["'left'"]});
+      break;
+    
+    case 74: // j key - Char2 right
+      roy.charCommands(ctx, {'move':["'right'"]});
+      break;
+
+    case 86: // v key - Char2 talk
+      roy.charCommands(ctx, {'talk':[]});
+      break;
+
+    case 66: // b key - Char2 sit
+      roy.charCommands(ctx, {'sit':[]});
       break;
 
     default: return; // exit this handler for other keys
