@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <title>FT - <?=$app_title;?></title>
+  <title>FT - <?php print $app_title;?></title>
   <meta name="description" content="Filmtronic: Short Films/Series & Digital Media Production">
   <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen" />
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -16,6 +16,6 @@
 </head>
 <body>
 <header style="background-color:#EAEAEA;padding: 4px; height: 50px">
-  <a style="float: left" id="logo" href="http://www.filmtronic.com"><img width="50" src="/images/logo_small_green_navy_filmtronic.png" /></a>
-  <div class="app_title">&nbsp;&nbsp;<?=$app_title;?></div>
+  <a style="float: left" id="logo" href="http://www.filmtronic.com"><img width="50" src="./images/logo_small_green_navy_filmtronic.png" /></a>
+  <div class="app_title">&nbsp;&nbsp;<?php print $app_title;?></div>
 </header>

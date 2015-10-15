@@ -8,32 +8,16 @@
 //       });
 //
 
-var dir_chars = './images/chars/';
-
-//ALERT: You have to put global variables outside of Jquery Tags for them
-//to work.
+//ALERT: You have to put global variables outside of Jquery Tags for them to work.
 var canvas, ctx;
 var keys_pressed = [];
 var i = 0;
 var global_time = 0;
-var phil;
+var cliff;
 var mimi;
-
-//var image_state = 'left-facing-standing-mouth-closed';
-
-/* OBJECT CONSTRUCTION */
-function character(name, x, y, w, h, image_state) {
-  this.x = x;
-  this.y = y;
-  this.w = w;
-  this.h = h;
-  this.name = name;
-  this.img = '';
-  this.image_state = image_state;
- 
-  this.img = new Image();
-  this.img.src = dir_chars + this.name + '/' + this.image_state + '.png';
-}
+var roy;
+var dir_chars = './images/chars/';
+var dir_props = './images/props/';
 
 function simulateKeyPress(char) {
   e = jQuery.Event("keydown");
@@ -43,10 +27,30 @@ function simulateKeyPress(char) {
   $("#canvas_set").trigger(e);
 }
 
-character.prototype.drawImage = function() {
+/* OBJECT CONSTRUCTION - Class Variables */
+function object(name, type, x, y, w, h, image_state) {
+  this.x = x;
+  this.y = y;
+  this.w = w;
+  this.h = h;
+  this.name = name;
+  this.img = '';
+  this.clothing = 'default';
+  this.image_state = image_state;
+  this.img = new Image();
+  this.props = [];
+  
+  if(type == 'character') {
+    this.img.src = dir_chars + this.name + '/' + this.clothing + '/' + this.image_state + '.png';
+  }
+  if(type == 'prop') {
+    this.img.src = dir_props + '/' + this.image_state + '.png';
+  }
+}
+object.prototype.drawImage = function() {
   ctx.drawImage(this.img, this.x, this.y, this.w, this.h);	
 }
-character.prototype.charCommands = function(ctx, config) {  
+object.prototype.charCommands = function(ctx, config) {  
   
   $.each(config, function( command, params ) {
     str = "this."+ command + "(ctx";
@@ -57,7 +61,7 @@ character.prototype.charCommands = function(ctx, config) {
   });
   eval(str);
 }
-character.prototype.move = function(ctx, direction){
+object.prototype.move = function(ctx, direction){
   
   var stationary = 0;  
   ctx.clearRect(this.x,this.y,this.w,this.h);
@@ -133,8 +137,7 @@ character.prototype.move = function(ctx, direction){
 	this.draw(ctx);
   
 }
-
-character.prototype.talk = function(ctx) {
+object.prototype.talk = function(ctx) {
   ctx.clearRect(this.x,this.y,this.w,this.h);
 	
   pos1 = 'front';
@@ -156,19 +159,14 @@ character.prototype.talk = function(ctx) {
     this.image_state = pos1 + '-' + pos2 + '-mouth-open';	  
   }
   
-  // TEST IMG-OVER-IMG
-  /*
-  ctx.globalCompositeOperation = 'destination-over';
-  ctx.clearRect(mimi.x,mimi.y,mimi.w,mimi.h);
-  mimi.drawImage();
-  this.draw(ctx);
-  ctx.globalCompositeOperation = 'source-over';
-  */
+  this.renderAttachedProps(ctx);
   
   this.draw(ctx);
+  
+  ctx.globalCompositeOperation = 'source-over';
   
 }
-character.prototype.sit = function(ctx) {
+object.prototype.sit = function(ctx) {
   if(this.image_state.indexOf('left-standing') != -1  ||
 	 this.image_state.indexOf('left-walking') != -1   ||
 	 this.image_state.indexOf('right-standing') != -1 ||
@@ -186,30 +184,51 @@ character.prototype.sit = function(ctx) {
     this.draw(ctx);
   }
 }
-character.prototype.draw = function(ctx) {
+object.prototype.renderAttachedProps = function(ctx) {
+  if(this.props.length) {
+    $.each(this.props, function(index, prop) {
+      // TEST IMG-OVER-IMG
+      ctx.globalCompositeOperation = 'destination-over';
+      ctx.clearRect(prop.x,prop.y,prop.w,prop.h);
+      prop.drawImage();
+    });
+  }
+  
+}
+object.prototype.draw = function(ctx) {
   this.changeImgSrc();
   ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
 } 
-character.prototype.changeImgSrc = function() {
+object.prototype.changeImgSrc = function() {
   //global_time += delay;	
   //setTimeout(function () {  
-  this.img.src = dir_chars + this.name + '/' + this.image_state + '.png';
+  this.img.src = dir_chars + this.name + '/' + this.clothing + '/' + this.image_state + '.png';
   //}, global_time);
 }
 
-function createChars() {
+function firstScene() {
   //Calling this first before drawing characters solves the 
   //"[refresh] dissapearing canvas" problem.
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
-  //TEST IMG-OVER-IMG
-  //ctx.globalCompositeOperation = 'destination-over';
-  //75, 400
-  mimi = new character('Mimi', 300, 50, 90, 120, 'front-standing-mouth-closed');
+  // SMOOTH LINES - ON/OFF
+  ctx.mozImageSmoothingEnabled = false;
+  
+  mimi = new object('Mimi', 'character', 308, -60, 80, 114, 'front-standing-mouth-closed');
   mimi.drawImage();
+  
+  // roy = new object('Roy', 'character', 308, 0, 80, 114, 'front-standing-mouth-closed');
+  // roy.drawImage();
+  
+  ctx.globalCompositeOperation = 'destination-over';
+  
+  bed = new object('bed', 'prop', 77, 349, 145, 112, 'hospital-bed-light-blue-blanket');
+  bed.drawImage();
+  
+  cliff = new object('Cliff', 'character', 75, 321, 80, 114, 'left-standing-mouth-closed');
+  cliff.props.push(bed);
+  cliff.drawImage();
  
-  phil = new character('Phil', 75, 320, 90, 120, 'left-sitting-mouth-closed');
-  phil.drawImage();
 }
 
 $(document).ready(function() {
@@ -218,40 +237,10 @@ $(document).ready(function() {
     var mySound = new buzz.sound( sound_file, {
     formats: [ "mp3" ]
   });
-  // Play sound file in a loop
-  //mySound.play();
-  
-  /*
-  sound_file = './sounds/ep1-cliff-d01';
-  var mySound1 = new buzz.sound( sound_file, {
-    formats: [ "mp3" ]
-  });
-  // Play sound file in a loop
-  // .loop();
-  
-  setTimeout(function(){ mySound1.play(); }, global_time);
-  
-  sound_file = './sounds/ep1-mimi-d01';
-  var mySound2 = new buzz.sound( sound_file, {
-    formats: [ "mp3" ]
-  });
-  global_time += 10000;
-  setTimeout(function() { mySound2.play(); }, global_time);
-  */
-  
-  // Useful Vars
-  // var str_loc = new String(window.location.href);
-	
-  /* MUSIC Config */
-  /*
-  var sound_file = '';
-  game_title = str_loc.replace(/.*\/poster\/(.*)\/game\//,'$1');
-  if(game_title.length) {
-    sound_file = './sounds/bg';
-  }
-  */
     
+  /* Create the Canvas Object */
   canvas = document.getElementById('canvas_set');
+  /* Set the 2D Context */
   ctx = canvas.getContext("2d");
   
   //$('#canvas_set').css('background-color', 'green');
@@ -259,19 +248,20 @@ $(document).ready(function() {
   sets[0] = './images/sets/hospital-private-room.png';
   $('#canvas_set').css('background-image', 'url("' + sets[0] + '")');
   
-  createChars();
+  firstScene();
   
   $('#record').click(function(){    
     if($(this).val() == 'RECORD') {
       keys_pressed = [];
       i = 0;
-      createChars();
+      firstScene();
       alert('Move Characters and Key Strokes will be recorded.');
       mySound.load();
       mySound.play();
       $(this).val('STOP RECORDING');
     } else {
       mySound.pause();
+      firstScene();
       $(this).val('RECORD');
       $('#play_back').css('display','inline-block');
       $('#play_back').val('PLAY');
@@ -286,7 +276,7 @@ $(document).ready(function() {
       $(this).val('STOP');
       mySound.load();
       mySound.play();
-      createChars();  
+      firstScene();  
     	for(index = 0; index < keys_pressed.length; index++) {  	  
     	  delay = 1500;
     	  if(index > 0) {
@@ -299,7 +289,8 @@ $(document).ready(function() {
     	}	
     } else {
       mySound.pause();
-      createChars();
+      firstScene();
+      $(this).val('PLAY');
     }
     
   });
@@ -317,64 +308,64 @@ $(document).keydown(function(e) {
 
 	i++;
 					
-    switch(e.which) {
-        case 37: // left arrow - Char1 left
-        	//alert('left');
-        	phil.charCommands(ctx, {'move':["'left'"]});
-            break;
+  switch(e.which) {
+    case 37: // left arrow - Char1 left
+    	//alert('left');
+    	cliff.charCommands(ctx, {'move':["'left'"]});
+        break;
 
-        case 38: // up arrow - Char1 up
-        	// if(!isPixelCollision(phil.img, phil.x + 20, phil.y + 20, mimi.img, mimi.x, mimi.y, false)) {
-        	phil.charCommands(ctx, {'move':["'up'"]});
-        	// }
-        	break;
+    case 38: // up arrow - Char1 up
+    	// if(!isPixelCollision(phil.img, phil.x + 20, phil.y + 20, mimi.img, mimi.x, mimi.y, false)) {
+      cliff.charCommands(ctx, {'move':["'up'"]});
+    	// }
+    	break;
 
-        case 39: // right arrow - Char1 right
-        	// Collision Detection
-        	// if(!isPixelCollision(phil.img, phil.x + 20, phil.y + 20, mimi.img, mimi.x, mimi.y, false)) {
-        	phil.charCommands(ctx, {'move':["'right'"]});	
-        	// }
-        	break;
+    case 39: // right arrow - Char1 right
+    	// Collision Detection
+    	// if(!isPixelCollision(phil.img, phil.x + 20, phil.y + 20, mimi.img, mimi.x, mimi.y, false)) {
+      cliff.charCommands(ctx, {'move':["'right'"]});	
+    	// }
+    	break;
 
-        case 40: // down arrow - Char1 down
-        	phil.charCommands(ctx, {'move':["'down'"]});
-        	break;
-        
-        case 32: // space key - Char1 talk
-        	phil.charCommands(ctx, {'talk':[]});
-            break;
-        
-        case 18: // ALT key - Char1 sit
-        	phil.charCommands(ctx, {'sit':[]});
-        	break;
-        
-        case 9: // TAB key - Char2 talk
-        	mimi.charCommands(ctx, {'talk':[]});
-        	break;
-        
-        case 87: // w key - Char2 up
-        	mimi.charCommands(ctx, {'move':["'up'"]});
-        	break;
-        
-        case 83: // s key - Char2 down
-        	mimi.charCommands(ctx, {'move':["'down'"]});
-            break;
-        
-        case 65: // a key - Char2 left
-        	mimi.charCommands(ctx, {'move':["'left'"]});
-            break;
-        
-        case 68: // d key - Char2 right
-        	mimi.charCommands(ctx, {'move':["'right'"]});
-            break;
-        
-        case 20: // Caps Lock key - Char2 sit
-        	mimi.charCommands(ctx, {'sit':[]});
-            break;
+    case 40: // down arrow - Char1 down
+      cliff.charCommands(ctx, {'move':["'down'"]});
+    	break;
+    
+    case 18: // space key - Char1 talk
+      cliff.charCommands(ctx, {'talk':[]});
+        break;
+    
+    case 191: // / ? key - Char1s sit
+      cliff.charCommands(ctx, {'sit':[]});
+    	break;
+    
+    case 9: // TAB key - Char2 talk
+    	mimi.charCommands(ctx, {'talk':[]});
+    	break;
+    
+    case 87: // w key - Char2 up
+    	mimi.charCommands(ctx, {'move':["'up'"]});
+    	break;
+    
+    case 83: // s key - Char2 down
+    	mimi.charCommands(ctx, {'move':["'down'"]});
+      break;
+    
+    case 65: // a key - Char2 left
+    	mimi.charCommands(ctx, {'move':["'left'"]});
+      break;
+    
+    case 68: // d key - Char2 right
+    	mimi.charCommands(ctx, {'move':["'right'"]});
+      break;
+    
+    case 20: // Caps Lock key - Char2 sit
+    	mimi.charCommands(ctx, {'sit':[]});
+      break;
 
-        default: return; // exit this handler for other keys
-    }
-    e.preventDefault(); // prevent the default action (scroll / move caret)
+    default: return; // exit this handler for other keys
+  }
+  e.preventDefault(); // prevent the default action (scroll / move caret)
     
 });
 
