@@ -18,6 +18,7 @@ include("include/header_basic.php");
     <input id="record" type="button" value="RECORD" />
     <input id="play_back" type="button" value="PLAY" />
   </div>
+  <br />
 <?
 include("include/footer_basic.php");
 ?>
