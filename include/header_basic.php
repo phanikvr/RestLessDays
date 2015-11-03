@@ -16,6 +16,6 @@
 </head>
 <body>
 <header style="background-color:#EAEAEA;padding: 4px; height: 50px">
-  <a style="float: left" id="logo" href="http://www.filmtronic.com"><img width="50" src="./images/logo_small_green_navy_filmtronic.png" /></a>
+  <a style="float: left" id="logo" href="/"><img width="50" src="./images/logo_small_green_navy_filmtronic.png" /></a>
   <div class="app_title">&nbsp;&nbsp;<?php print $app_title;?></div>
 </header>

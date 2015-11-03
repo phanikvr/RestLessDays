@@ -3,6 +3,7 @@
  * Game Home file.
  */
 $app_title = "T H E &nbsp;R E S T L E S S &nbsp;D A Y S";
+include("include/general.inc.php");
 include("include/header_basic.php");
 ?>
 <br /><br />
@@ -17,6 +18,8 @@ include("include/header_basic.php");
   <div id="controls">
     <input id="record" type="button" value="RECORD" />
     <input id="play_back" type="button" value="PLAY" />
+    <input id="zoom" type="button" value="ZOOM" />
+    <input id="wide" type="button" value="WIDE" />
   </div>
   <br />
 <?

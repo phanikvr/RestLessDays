@@ -235,7 +235,8 @@ $(document).ready(function() {
   	
   sound_file = './sounds/episode01-part2';
     var mySound = new buzz.sound( sound_file, {
-    formats: [ "mp3" ]
+    formats: [ "mp3" ],
+    volume: 100
   });
     
   /* Create the Canvas Object */
@@ -243,12 +244,31 @@ $(document).ready(function() {
   /* Set the 2D Context */
   ctx = canvas.getContext("2d");
   
+  canvas.addEventListener("click", doMouseDown, false);
+  
+ 
   //$('#canvas_set').css('background-color', 'green');
   sets = [];
   sets[0] = './images/sets/hospital-private-room.png';
   $('#canvas_set').css('background-image', 'url("' + sets[0] + '")');
   
+  //Zoom facility
+  /*  
+  ctx.save();
+  ctx.translate(-300,-1500);
+  ctx.scale(5,5);
+  ctx.restore();
+  */
+  
+  //ctx.translate(-100,-100);
+  //$('#canvas_set').css('background-size', '600% 600%');
+  
   firstScene();
+  //ctx.translate(50,50);
+  /*
+  ctx.translate(50,50);
+  ctx.scale(scaleFactor,scaleFactor);
+  */
   
   $('#record').click(function(){    
     if($(this).val() == 'RECORD') {
@@ -273,6 +293,9 @@ $(document).ready(function() {
   $('#play_back').click(function(){
     
     if($(this).val() == 'PLAY') {
+      
+      alert('test');
+      
       $(this).val('STOP');
       
       mySound.load();
@@ -301,6 +324,27 @@ $(document).ready(function() {
       $(this).val('PLAY');
     }
     
+  });
+  
+  $('#zoom').click(function(){
+    /*
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //$('#canvas_set').css('background-size', '200% 200%');
+    ctx.save();
+    ctx.scale(1.5,1.5);
+    ctx.restore();
+    */
+    
+    ctx.save();
+    ctx.translate(-300,-1500);
+    ctx.scale(5,5);
+  });
+  
+  $('#wide').click(function(){
+    ctx.restore();
+    //ctx.translate(50,-2000);
+    //sctx.clearRect(0, 0, canvas.width, canvas.height);
+    //$('#canvas_set').css('background-size', '100% 100%');
   });
   
   
@@ -402,6 +446,13 @@ $(document).keydown(function(e) {
   e.preventDefault(); // prevent the default action (scroll / move caret)
     
 });
+
+function doMouseDown(event){
+  x = event.pageX - canvas.offsetLeft;
+  y = event.pageY - canvas.offsetTop;
+  alert(x + ':' + y);
+  //ctx.translate(x,y);
+}
 
 /**
  * @author Joseph Lenton - PlayMyCode.com
