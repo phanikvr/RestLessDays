@@ -19,6 +19,7 @@ body {
   background-position: 25% 10%;
   background-size:400%;
   **/
+  zoom: 200%;
 }
 
 #controls {

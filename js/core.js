@@ -246,29 +246,20 @@ $(document).ready(function() {
   
   canvas.addEventListener("click", doMouseDown, false);
   
- 
   //$('#canvas_set').css('background-color', 'green');
   sets = [];
   sets[0] = './images/sets/hospital-private-room.png';
   $('#canvas_set').css('background-image', 'url("' + sets[0] + '")');
   
-  //Zoom facility
-  /*  
-  ctx.save();
-  ctx.translate(-300,-1500);
-  ctx.scale(5,5);
-  ctx.restore();
-  */
-  
-  //ctx.translate(-100,-100);
+  //Zoom facility - Work in Progress
+  //ctx.save();
+  //ctx.translate(-300,-1500);
+  //ctx.scale(5,5);
+  //ctx.restore();
+
   //$('#canvas_set').css('background-size', '600% 600%');
   
   firstScene();
-  //ctx.translate(50,50);
-  /*
-  ctx.translate(50,50);
-  ctx.scale(scaleFactor,scaleFactor);
-  */
   
   $('#record').click(function(){    
     if($(this).val() == 'RECORD') {
@@ -293,9 +284,6 @@ $(document).ready(function() {
   $('#play_back').click(function(){
     
     if($(this).val() == 'PLAY') {
-      
-      alert('test');
-      
       $(this).val('STOP');
       
       mySound.load();
@@ -327,24 +315,9 @@ $(document).ready(function() {
   });
   
   $('#zoom').click(function(){
-    /*
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //$('#canvas_set').css('background-size', '200% 200%');
-    ctx.save();
-    ctx.scale(1.5,1.5);
-    ctx.restore();
-    */
-    
-    ctx.save();
-    ctx.translate(-300,-1500);
-    ctx.scale(5,5);
   });
   
   $('#wide').click(function(){
-    ctx.restore();
-    //ctx.translate(50,-2000);
-    //sctx.clearRect(0, 0, canvas.width, canvas.height);
-    //$('#canvas_set').css('background-size', '100% 100%');
   });
   
   
