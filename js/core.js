@@ -314,12 +314,21 @@ $(document).ready(function() {
     
   });
   
+  var canvas_tmp;
+  
   $('#zoom').click(function(){
+    ctx.save();
+    canvas_tmp = canvas;
+    ctx.translate(-300,-1500);
+    ctx.scale(5,5);
+    ctx.drawImage(canvas, 0, 0);
   });
-  
+ 
   $('#wide').click(function(){
+    // ALERT: Still not going back to WID, images missing.
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.restore();
   });
-  
   
 });
 
