@@ -38,6 +38,8 @@ used (High Volume may be annoying).
     <li>Hey YOU!</li>
     </ul>
     -->
+    <div id="channel_off" class="channel">
+    </div>
     <div id="channel_1" class="channel">
       <!-- The Canvas width/height can shrink for external website integration -->
       <canvas width="400" height="400" id="canvas_set"></canvas>  
@@ -66,20 +68,45 @@ used (High Volume may be annoying).
         </div>
     </div>
 
+    <div id="channel_3" class="channel">
+        <div style="float: left;height:400px; width:400px; overflow-y:scroll;overflow-x:hidden;">
+            <div class="gossip">CH3 - Questions must have at least one question mark "?".</div>
+            <div class="gossip"></div>
+            <div class="gossip"><b>YOU ></b> Who is Cliff?</div>
+            <div class="gossip"><b>PUBLIC ></b> <b>Who is Cliff? ></b> Cliff is the owner of Cliff Creations</div>
+            <div class="gossip"><b>YOU ></b> Is he a designer?</div>
+            <div class="gossip"><b>PUBLIC ></b> <b>Is he a designer? ></b> Yeah he is.</div>
+            <div class="gossip"><b>YOU ></b> Who is Cliff?</div>
+            <div class="gossip"><b>PUBLIC ></b> <b>Who is Cliff? ></b> Cliff is the owner of Cliff Creations</div>
+            <div class="gossip"><b>YOU ></b> Is he a designer?</div>
+            <div class="gossip"><b>PUBLIC ></b> <b>Is he a designer? ></b> Yeah he is.</div>
+            <div class="gossip"><b>YOU ></b> Who is Cliff?</div>
+            <div class="gossip"><b>PUBLIC ></b> <b>Who is Cliff? ></b> Cliff is the owner of Cliff Creations</div>
+            <div class="gossip"><b>YOU ></b> Is he a designer?</div>
+            <div class="gossip"><b>PUBLIC ></b> <b>Is he a designer? ></b> Yeah he is.</div>
+            <div class="gossip"><b>YOU ></b> Who is Cliff?</div>
+            <div class="gossip"><b>PUBLIC ></b> <b>Who is Cliff? ></b> Cliff is the owner of Cliff Creations</div>
+            <div class="gossip"><b>YOU ></b> Is he a designer?</div>
+            <div class="gossip"><b>PUBLIC ></b> <b>Is he a designer? ></b> Yeah he is.</div>
+        </div>
+    </div>
+
     <div class="controls">
+      <input id="power_button" type="button" value="ON" />
       <input id="play_back" type="button" value="PLAY" />
       CH<span id="channel_number">1</span>
       <input id="channel_plus" type="button" value="Ch +" />
       <input id="channel_minus" type="button" value="Ch -" />
       <input id="volume_plus" type="button" value="V +" />
       <input id="volume_minus" type="button" value="V -" />
-      <input id="comments" type="button" value="C" />
       <div id="screen_logo"></div>
     </div>
 </div>
 
 <br /><br />
 IMPORTANT NOTES/TASKS<br />
+- Do MINUS -channel functionality.<br />
+- Put "TV Coloured Lines" Init in the Channel 1 content.<br />
 - Get local version of Javascript Library<br/ >
 - Put a new Channel DIV "channel_3" > Hey YOU (with add comment input)
 - Work on the Channel "+ -" functionality.

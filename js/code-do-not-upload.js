@@ -40,6 +40,21 @@ function simulateKeyPress(char) {
   $("#canvas_set").trigger(e);
 }
 
+/* Channels Content */
+function channelOff() {
+
+}
+function channel1Content() {
+  
+}
+function channel2Content() {
+  
+}
+
+function channel3Content() {
+  
+}
+
 /* OBJECT CONSTRUCTION - Class Variables */
 function object(name, type, x, y, w, h, image_state) {
   this.x = x;
@@ -332,17 +347,6 @@ $(document).ready(function() {
     }
   });
 
-  $('#comments').click(function(){
-    canvas.width = canvas.width;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    $('#canvas_set').css('background-image', 'url("' + sets[2] + '")');
-    
-    setTimeout(function(){  
-      $('#channel_2').css('display','block');
-      $('#channel_1').css('display','none');
-    }, 2000);
-  });
-
   $('#channel_plus').click(function(){
 
     new_no = parseInt($('#channel_number').html()) + 1
@@ -350,6 +354,34 @@ $(document).ready(function() {
     if(new_no < 4 && new_no > 0) {
       $('#channel_number').html(new_no);
     }
+
+    if(new_no == 2) {
+      canvas.width = canvas.width;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      $('#canvas_set').css('background', 'url("' + sets[2] + '") top left no-repeat');
+      
+      setTimeout(function(){  
+        $('#channel_1').css('display','none');
+        $('#channel_2').css('display','block');
+      }, 2000);
+    }
+
+    if(new_no == 3) {
+      canvas.width = canvas.width;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      $('#channel_2').css('display','none');
+      $('#channel_1').css('display','none');
+      $('#channel_3').css('display','block');
+      $('#channel_3 div').css('display', 'none');
+      $('#channel_3').css('background', 'url("' + sets[2] + '") top left no-repeat');
+
+      setTimeout(function(){
+        $('#channel_3').css('background-image', 'none'); 
+        $('#channel_3 div').css('display', 'block');
+      }, 2000);
+    }
+
+
   });
 
   $('#channel_minus').click(function(){
@@ -357,6 +389,18 @@ $(document).ready(function() {
     
     if(new_no < 4 && new_no > 0) {
       $('#channel_number').html(new_no);
+    }
+  });
+
+  $('#power_button').click(function(){
+    if($(this).val() == 'ON') {
+      $('#channel_off').css('display','none');
+      $('#channel_1').css('display','block');
+      $(this).val('OFF');
+    } else {
+      $('#channel_off').css('display','block');
+      $('#channel_1').css('display','none');
+      $(this).val('ON');
     }
   });
   
