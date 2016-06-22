@@ -342,6 +342,23 @@ $(document).ready(function() {
       $('#channel_1').css('display','none');
     }, 2000);
   });
+
+  $('#channel_plus').click(function(){
+
+    new_no = parseInt($('#channel_number').html()) + 1
+    
+    if(new_no < 4 && new_no > 0) {
+      $('#channel_number').html(new_no);
+    }
+  });
+
+  $('#channel_minus').click(function(){
+    new_no = parseInt($('#channel_number').html()) - 1
+    
+    if(new_no < 4 && new_no > 0) {
+      $('#channel_number').html(new_no);
+    }
+  });
   
   //$('#play_back').css('display','none');
   
@@ -351,7 +368,15 @@ $(document).ready(function() {
       $(this).val('STOP');
       
       /* Initialise Show - InitConfig */
-      ctx.scale(0.84,0.84);
+      // ALERT: This is problematic because coming from the "Comments" section
+      // Creates a Scale problem.
+      /*
+      scaleWidth = canvas.width/100;
+      scaleHeight = canvas.height/100;
+      alert(scaleWidth);
+      */
+      //ctx.scale(0.84,0.84);
+      
       $('#channel_2').css('display','none');
       $('#channel_1').css('display','block');
       episode1Sound.load();

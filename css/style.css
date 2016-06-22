@@ -11,6 +11,15 @@ body {
   height:100%;
 }
 
+input[type=button] {
+  font-size: 8px;
+  font-weight: bold;
+}
+
+input[type=button]:hover {
+  cursor: pointer;
+}
+
 /*
   margin-left: auto;
   margin-right: auto;
@@ -45,6 +54,10 @@ body {
 #channel_2 {
   display: none;
   background-color:#13280E;
+}
+
+#channel_number {
+  
 }
 
 #screen {

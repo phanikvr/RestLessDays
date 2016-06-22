@@ -51,35 +51,29 @@ used (High Volume may be annoying).
             <div class="gossip"><b>PUBLIC ></b> <b>Who is Cliff? ></b> Cliff is the owner of Cliff Creations</div>
             <div class="gossip"><b>YOU ></b> Is he a designer?</div>
             <div class="gossip"><b>PUBLIC ></b> <b>Is he a designer? ></b> Yeah he is.</div>
-            <div class="gossip"><b>YOU ></b> <b>Replied ></b> He slipped on a peanut <b>> TO > SomeNic2 ></b> Why is he in hospital?</div>
             <div class="gossip"><b>YOU ></b> Who is Cliff?</div>
             <div class="gossip"><b>PUBLIC ></b> <b>Who is Cliff? ></b> Cliff is the owner of Cliff Creations</div>
             <div class="gossip"><b>YOU ></b> Is he a designer?</div>
             <div class="gossip"><b>PUBLIC ></b> <b>Is he a designer? ></b> Yeah he is.</div>
-            <div class="gossip"><b>YOU ></b> <b>Replied ></b> He slipped on a peanut <b>> TO > SomeNic2 ></b> 
-                 Why is he in hospital?</div>
             <div class="gossip"><b>YOU ></b> Who is Cliff?</div>
             <div class="gossip"><b>PUBLIC ></b> <b>Who is Cliff? ></b> Cliff is the owner of Cliff Creations</div>
             <div class="gossip"><b>YOU ></b> Is he a designer?</div>
             <div class="gossip"><b>PUBLIC ></b> <b>Is he a designer? ></b> Yeah he is.</div>
-            <div class="gossip"><b>YOU ></b> <b>Replied ></b> He slipped on a peanut <b>> TO > SomeNic2 ></b> Why is he in hospital?</div>
             <div class="gossip"><b>YOU ></b> Who is Cliff?</div>
             <div class="gossip"><b>PUBLIC ></b> <b>Who is Cliff? ></b> Cliff is the owner of Cliff Creations</div>
             <div class="gossip"><b>YOU ></b> Is he a designer?</div>
             <div class="gossip"><b>PUBLIC ></b> <b>Is he a designer? ></b> Yeah he is.</div>
-            <div class="gossip"><b>YOU ></b> <b>Replied ></b> He slipped on a peanut <b>> TO > SomeNic2 ></b> 
-                 Why is he in hospital?</div>
         </div>
     </div>
 
     <div class="controls">
       <input id="play_back" type="button" value="PLAY" />
-      CH1
-      <input id="channel_plus" type="button" value="c +" />
-      <input id="channel_minus" type="button" value="c -" />
-      <input id="volume_plus" type="button" value="v +" />
-      <input id="volume_minus" type="button" value="v -" />
-      <input id="comments" type="button" value="c" />
+      CH<span id="channel_number">1</span>
+      <input id="channel_plus" type="button" value="Ch +" />
+      <input id="channel_minus" type="button" value="Ch -" />
+      <input id="volume_plus" type="button" value="V +" />
+      <input id="volume_minus" type="button" value="V -" />
+      <input id="comments" type="button" value="C" />
       <div id="screen_logo"></div>
     </div>
 </div>
