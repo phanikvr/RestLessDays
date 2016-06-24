@@ -14,22 +14,6 @@ include("include/header_basic.php");
 ./images/chars/phil/front-standing-mouth-closed.png
 ./images/chars/ledge/front-standing-mouth-closed.png
 -->
-<!--
-TASKS
-- Soundtrack - Dreammaker with Intro OR
-             On the town
-
-- GET RID Of STOP button and makes PLAY Turn into REFRESH perhaps.
-
-- 2nd Show: Cliff has arisen from his bed. Mimi meets him. They leave together. He stares
-at his room one last time "One year. Good bye Room!"
-
-- ALERT!!! You might put a message on the Computer Games that have sound, that sound is 
-used (High Volume may be annoying).
-
-- ALERT!!! Sound may be an issue. Sound bugs can be annoying.
--->
-
 <div id="screen">
     <!--
     <ul id="game_tabs_headers"> 
@@ -40,31 +24,45 @@ used (High Volume may be annoying).
     -->
     <div id="channel_off" class="channel">
     </div>
-    <div id="channel_1" class="channel">
+    <div id="gui" class="channel">
       <!-- The Canvas width/height can shrink for external website integration -->
       <canvas width="400" height="400" id="canvas_set"></canvas>  
     </div>
 
-    <div id="channel_2" class="channel">
-        <div style="float: left;height:400px; width:400px; overflow-y:scroll;overflow-x:hidden;">
-            <div class="gossip">Questions must have at least one question mark "?".</div>
-            <div class="gossip"></div>
-            <div class="gossip"><b>YOU ></b> Who is Cliff?</div>
-            <div class="gossip"><b>PUBLIC ></b> <b>Who is Cliff? ></b> Cliff is the owner of Cliff Creations</div>
-            <div class="gossip"><b>YOU ></b> Is he a designer?</div>
-            <div class="gossip"><b>PUBLIC ></b> <b>Is he a designer? ></b> Yeah he is.</div>
-            <div class="gossip"><b>YOU ></b> Who is Cliff?</div>
-            <div class="gossip"><b>PUBLIC ></b> <b>Who is Cliff? ></b> Cliff is the owner of Cliff Creations</div>
-            <div class="gossip"><b>YOU ></b> Is he a designer?</div>
-            <div class="gossip"><b>PUBLIC ></b> <b>Is he a designer? ></b> Yeah he is.</div>
-            <div class="gossip"><b>YOU ></b> Who is Cliff?</div>
-            <div class="gossip"><b>PUBLIC ></b> <b>Who is Cliff? ></b> Cliff is the owner of Cliff Creations</div>
-            <div class="gossip"><b>YOU ></b> Is he a designer?</div>
-            <div class="gossip"><b>PUBLIC ></b> <b>Is he a designer? ></b> Yeah he is.</div>
-            <div class="gossip"><b>YOU ></b> Who is Cliff?</div>
-            <div class="gossip"><b>PUBLIC ></b> <b>Who is Cliff? ></b> Cliff is the owner of Cliff Creations</div>
-            <div class="gossip"><b>YOU ></b> Is he a designer?</div>
-            <div class="gossip"><b>PUBLIC ></b> <b>Is he a designer? ></b> Yeah he is.</div>
+    <div id="command_prompt" class="channel">
+        <div style="float: left;height:400px; width:400px;overflow-y:scroll">
+           <div class="line">admin> Type "instructions" to see the game instructions or if you know them start typing your commands :)</div>
+            <!-- id="prompt" is used because there will only ever be one current prompt. -->
+            <div class="line">prompt> <input id="prompt" name="prompt" type="text" value="" /></div>
+            <div class="line">admin> Did you think that Cliff was an interesting character? y/n</div>
+            <div class="line">prompt> <input name="prompt" type="text" value="Y" /></div>
+            <div class="line">admin><br />70% of the public are currently saying 'YES' to  'Do you think that Cliff was interesting?'</div>
+            <div class="line">admin> Did you think that Cliff was an interesting character? y/n</div>
+            <div class="line">prompt> <input name="prompt" type="text" value="show statistics" /></div>
+            <div class="line">admin><br />
+            70% of the public are currently saying 'YES' to  'Do you think that Cliff was interesting?'<br />
+            20% of the public are currently saying 'YES' to  'Do you think that Roy was interesting?'</div>
+            <div class="line">prompt> <input name="prompt" type="text" value="show comments all" /></div>
+            <div class="line">admin><br />
+            sydney | This is a crap game<br />
+            melbourne | This is a crap game<br />
+            sydney | This is a crap game<br />
+            sydney | This is a crap game<br />
+            New York | This is a crap game<br />
+            New York | This is a crap game<br />
+            Ontario | This is a crap game<br />
+            </div>
+            <div class="line">prompt> <input name="prompt" type="text" value="show comments sydney" /><br />
+            sydney | This is a crap game<br />
+            sydney | This is a crap game<br />
+            sydney | This is a crap game<br />
+            sydney | This is a crap game<br />
+            sydney | This is a crap game<br />
+            sydney | This is a crap game<br />
+            sydney | This is a crap game<br />
+            </div>
+            sdfsfsdf<br />
+            sdfsdf<br />
         </div>
     </div>
 
@@ -94,9 +92,11 @@ used (High Volume may be annoying).
     <div class="controls">
       <input id="power_button" type="button" value="ON" />
       <input id="play_back" type="button" value="PLAY" />
+      <!--     
       CH<span id="channel_number">1</span>
       <input id="channel_plus" type="button" value="Ch +" />
       <input id="channel_minus" type="button" value="Ch -" />
+      -->
       <input id="volume_plus" type="button" value="V +" />
       <input id="volume_minus" type="button" value="V -" />
       <div id="screen_logo"></div>
@@ -104,22 +104,28 @@ used (High Volume may be annoying).
 </div>
 
 <br /><br />
-IMPORTANT NOTES/TASKS<br />
+<b>IMPORTANT NOTES/TASKS</b><br />
+- <b>Make money! even if it's one dollar $$$$</b><br />
+- SOUND BUGS WILL BE ANNOYING > Watch out for them. TEST and RE-TEST Sound Usage!!!!!<br />
+- Perhaps the game shuts down automatically after 5minutes of play with a msg like 
+     "prompt>Rest and enjoy life! Shutting down..." [then it actutally goes black screen]
+- .click() functionality isn't the same as a BUTTON PRESS. The Play button and it's onclick equivalent aren't producing
+  the same action!!! (Cartoon movements are wrong)<br />
 - Do MINUS -channel functionality.<br />
 - Put "TV Coloured Lines" Init in the Channel 1 content.<br />
 - Get local version of Javascript Library<br/ >
-- Put a new Channel DIV "channel_3" > Hey YOU (with add comment input)
-- Work on the Channel "+ -" functionality.
-- Finish the "CHx" channel number functionality.
-- Finish Volume "+ -"
+- Put a new Channel DIV "channel_3" > Hey YOU (with add comment input)<br />
+- Work on the Channel "+ -" functionality.<br />
+- Finish the "CHx" channel number functionality.<br />
+- Finish Volume "+ -"<br />
 - Each Game can scale from w:500px h:500px to smaller. So you can create a mini-app for other websites.<br />
-<br />
-      
-
-<br />  
-  <img width="100" src="./images/sets/computer-green-lines.jpg" /><br />
-  <img width="100" src="./images/sets/tv-coloured-lines.png" /><br />
-  <img width="100" src="./images/sets/tv-screen-old.jpg" /><br />
+- Soundtrack - Dreammaker with Intro OR On the town<br />
+- GET RID Of STOP button and makes PLAY Turn into REFRESH perhaps.<br />
+- 2nd Show: Cliff has arisen from his bed. Mimi meets him. They leave together. He stares
+at his room one last time "One year. Good bye Room!"<br />
+- ALERT!!! You might put a message on the Computer Games that have sound, that sound is 
+used (High Volume may be annoying).<br />
+- ALERT!!! Sound may be an issue. Sound bugs can be annoying.<br />
 
   <br />
   <div id="controls">

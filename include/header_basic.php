@@ -9,10 +9,11 @@
   <title>FT - <?php print $app_title;?></title>
   <meta name="description" content="Film Reviews and Computer Games" />
   <link rel="stylesheet" type="text/css" href="./css/style.css" />
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <!--
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="./js/core.js?<?=substr( md5(rand()), 0, 7);?>" type="text/javascript" charset="utf-8"></script>
   -->
+  <script src="./js/jquery-2.1.1.min.js"></script>
   <script src="./js/code-do-not-upload.js?<?=substr( md5(rand()), 0, 7);?>" type="text/javascript" charset="utf-8"></script>
   <script src="./js/buzz.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="./js/game.js"></script>

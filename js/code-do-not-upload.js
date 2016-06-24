@@ -10,9 +10,13 @@
 
 //ALERT: You have to put global variables outside of Jquery Tags for them to work.
 
+/* Cool Code to be tested */
+/*
+$('#canvas_set').fadeOut(2000);
+*/
+
 // The Main Canvas Object and 2D Context variable
 var canvas, ctx;
-
 // Array that holds Every Key that has been pressed in the recording process.
 var keys_pressed = [];
 // Incrementer for the keys_pressed array.
@@ -286,7 +290,7 @@ $(document).ready(function() {
   sets = [];
   sets[0] = './images/sets/hospital-private-room.png';
   sets[1] = './images/sets/tv-coloured-lines.png';
-  sets[2] = './images/sets/computer-green-lines.jpg';
+  sets[2] = './images/sets/device-green-lines.png';
   
   /*
   *********
@@ -395,15 +399,28 @@ $(document).ready(function() {
   $('#power_button').click(function(){
     if($(this).val() == 'ON') {
       $('#channel_off').css('display','none');
-      $('#channel_1').css('display','block');
+      $('#command_prompt').css('display','block');
+      //$('#command_prompt').css('background', 'url("' + sets[2] + '") top left no-repeat');
+
+      //setTimeout(function(){
+        //$('#command_prompt').css('background','none');
+        //$('#command_prompt').css('background-color','#11230E');
+        $('#command_prompt div').css('display','block');
+        $('#prompt').focus();
+      //}, 1000);
+            /*
+      $('#channel_off').css('display','none');
+      $('#gui').fadeIn(2000);
       $(this).val('OFF');
+      */
     } else {
       $('#channel_off').css('display','block');
-      $('#channel_1').css('display','none');
+      $('#gui').css('display','none');
+      $('#command_prompt').css('display','none');
       $(this).val('ON');
     }
   });
-  
+
   //$('#play_back').css('display','none');
   
   $('#play_back').click(function(){
@@ -421,8 +438,8 @@ $(document).ready(function() {
       */
       //ctx.scale(0.84,0.84);
       
-      $('#channel_2').css('display','none');
-      $('#channel_1').css('display','block');
+      $('#command_prompt').css('display','none');
+      $('#gui').css('display','block');
       episode1Sound.load();
       $('#canvas_set').css('background-image', 'url("' + sets[0] + '")');
       firstScene();  
@@ -496,90 +513,106 @@ $(document).keydown(function(e) {
 
 	i++;
 
-  // alert(e.which);
-					
-  switch(e.which) {
-    case 37: // left arrow - Char1 left
-    	//alert('left');
-    	cliff.charCommands(ctx, {'move':["'left'"]});
-        break;
+  //alert(e.which);
 
-    case 38: // up arrow - Char1 up
-    	// if(!isPixelCollision(phil.img, phil.x + 20, phil.y + 20, mimi.img, mimi.x, mimi.y, false)) {
-      cliff.charCommands(ctx, {'move':["'up'"]});
-    	// }
-    	break;
-
-    case 39: // right arrow - Char1 right
-    	// Collision Detection
-    	// if(!isPixelCollision(phil.img, phil.x + 20, phil.y + 20, mimi.img, mimi.x, mimi.y, false)) {
-      cliff.charCommands(ctx, {'move':["'right'"]});	
-    	// }
-    	break;
-
-    case 40: // down arrow - Char1 down
-      cliff.charCommands(ctx, {'move':["'down'"]});
-    	break;
-    
-    case 18: // space key - Char1 talk
-      cliff.charCommands(ctx, {'talk':[]});
-        break;
-    
-    case 191: // / ? key - Char1s sit
-      cliff.charCommands(ctx, {'sit':[]});
-    	break;
-    
-    case 9: // TAB key - Char2 talk
-    	mimi.charCommands(ctx, {'talk':[]});
-    	break;
-    
-    case 87: // w key - Char2 up
-    	mimi.charCommands(ctx, {'move':["'up'"]});
-    	break;
-    
-    case 83: // s key - Char2 down
-    	mimi.charCommands(ctx, {'move':["'down'"]});
-      break;
-    
-    case 65: // a key - Char2 left
-    	mimi.charCommands(ctx, {'move':["'left'"]});
-      break;
-    
-    case 68: // d key - Char2 right
-    	mimi.charCommands(ctx, {'move':["'right'"]});
-      break;
-    
-    case 20: // Caps Lock key - Char2 sit
-    	mimi.charCommands(ctx, {'sit':[]});
-      break;
-
-    case 89: // y key - Char2 up
-      roy.charCommands(ctx, {'move':["'up'"]});
-      break;
-    
-    case 72: // h key - Char2 down
-      roy.charCommands(ctx, {'move':["'down'"]});
-      break;
-
-    case 71: // g key - Char2 left
-      roy.charCommands(ctx, {'move':["'left'"]});
-      break;
-    
-    case 74: // j key - Char2 right
-      roy.charCommands(ctx, {'move':["'right'"]});
-      break;
-
-    case 86: // v key - Char2 talk
-      roy.charCommands(ctx, {'talk':[]});
-      break;
-
-    case 66: // b key - Char2 sit
-      roy.charCommands(ctx, {'sit':[]});
-      break;
-
-    default: return; // exit this handler for other keys
+  if($('#command_prompt').css('display') == 'block') {
+    if($('#prompt').val() == 'play' && e.which == 13) {
+      $('#play_back').click();
+    }
   }
-  e.preventDefault(); // prevent the default action (scroll / move caret)
+
+  if($('#gui').css('display') == 'block') {
+					
+    switch(e.which) {
+      case 27:
+        $('#gui').css('display','none');
+        $('#command_prompt').css('display','block');
+        // ALERT: Sound BUGS WILL BE ANNOYING!!!! Watch out!!!!
+        episode1Sound.pause();
+        break;
+      case 37: // left arrow - Char1 left
+      	//alert('left');
+      	cliff.charCommands(ctx, {'move':["'left'"]});
+        break;
+
+      case 38: // up arrow - Char1 up
+      	// if(!isPixelCollision(phil.img, phil.x + 20, phil.y + 20, mimi.img, mimi.x, mimi.y, false)) {
+        cliff.charCommands(ctx, {'move':["'up'"]});
+      	// }
+      	break;
+
+      case 39: // right arrow - Char1 right
+      	// Collision Detection
+      	// if(!isPixelCollision(phil.img, phil.x + 20, phil.y + 20, mimi.img, mimi.x, mimi.y, false)) {
+        cliff.charCommands(ctx, {'move':["'right'"]});	
+      	// }
+      	break;
+
+      case 40: // down arrow - Char1 down
+        cliff.charCommands(ctx, {'move':["'down'"]});
+      	break;
+      
+      case 18: // space key - Char1 talk
+        cliff.charCommands(ctx, {'talk':[]});
+          break;
+      
+      case 191: // / ? key - Char1s sit
+        cliff.charCommands(ctx, {'sit':[]});
+      	break;
+      
+      case 9: // TAB key - Char2 talk
+      	mimi.charCommands(ctx, {'talk':[]});
+      	break;
+      
+      case 87: // w key - Char2 up
+      	mimi.charCommands(ctx, {'move':["'up'"]});
+      	break;
+      
+      case 83: // s key - Char2 down
+      	mimi.charCommands(ctx, {'move':["'down'"]});
+        break;
+      
+      case 65: // a key - Char2 left
+      	mimi.charCommands(ctx, {'move':["'left'"]});
+        break;
+      
+      case 68: // d key - Char2 right
+      	mimi.charCommands(ctx, {'move':["'right'"]});
+        break;
+      
+      case 20: // Caps Lock key - Char2 sit
+      	mimi.charCommands(ctx, {'sit':[]});
+        break;
+
+      case 89: // y key - Char2 up
+        roy.charCommands(ctx, {'move':["'up'"]});
+        break;
+      
+      case 72: // h key - Char2 down
+        roy.charCommands(ctx, {'move':["'down'"]});
+        break;
+
+      case 71: // g key - Char2 left
+        roy.charCommands(ctx, {'move':["'left'"]});
+        break;
+      
+      case 74: // j key - Char2 right
+        roy.charCommands(ctx, {'move':["'right'"]});
+        break;
+
+      case 86: // v key - Char2 talk
+        roy.charCommands(ctx, {'talk':[]});
+        break;
+
+      case 66: // b key - Char2 sit
+        roy.charCommands(ctx, {'sit':[]});
+        break;
+
+      default: return; // exit this handler for other keys
+    }
+    e.preventDefault(); // prevent the default action (scroll / move caret)
+
+  }
     
 });
 
