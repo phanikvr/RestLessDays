@@ -15,13 +15,7 @@ include("include/header_basic.php");
 ./images/chars/ledge/front-standing-mouth-closed.png
 -->
 <div id="screen">
-    <!--
-    <ul id="game_tabs_headers"> 
-    <li>Play</li>
-    <li>Comments</li>
-    <li>Hey YOU!</li>
-    </ul>
-    -->
+    
     <div id="channel_off" class="channel">
     </div>
     <div id="gui" class="channel">
@@ -105,6 +99,7 @@ include("include/header_basic.php");
 
 <br /><br />
 <b>IMPORTANT NOTES/TASKS</b><br />
+- Do a 'clear' command.<br />
 - <b>Make money! even if it's one dollar $$$$</b><br />
 - SOUND BUGS WILL BE ANNOYING > Watch out for them. TEST and RE-TEST Sound Usage!!!!!<br />
 - Perhaps the game shuts down automatically after 5minutes of play with a msg like 

@@ -107,20 +107,6 @@ input[type=button]:hover {
   margin-top: 5px;
 }
 
-/*
-#game_tabs_headers {
-  margin-bottom: -4px;
-  padding: 0px; 
-  display: inline-block;
-}
-#game_tabs_headers li {  
-  float: left;
-  list-style: none;
-  margin-right: 10px;
-  background-color: #EAEAEA;
-}
-*/
-
 #controls {
   width: 500px;
 }
