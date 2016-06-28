@@ -44,20 +44,17 @@ function simulateKeyPress(char) {
   $("#canvas_set").trigger(e);
 }
 
-/* Channels Content */
+/* OLD CODE: Channels Content */
+/*
 function channelOff() {
-
 }
 function channel1Content() {
-  
 }
 function channel2Content() {
-  
 }
-
-function channel3Content() {
-  
+function channel3Content() {  
 }
+*/
 
 /* OBJECT CONSTRUCTION - Class Variables */
 function object(name, type, x, y, w, h, image_state) {
