@@ -455,6 +455,7 @@ $(document).ready(function() {
     	    delay = keys_pressed[index][0] - keys_pressed[index-1][0];
     	  }
     	  global_time += delay;
+        /* Why is the following notation important? */
     	  (function(index) {
     	    setTimeout(function(){ simulateKeyPress(keys_pressed[index][1]); }, global_time);
     	  })(index)
