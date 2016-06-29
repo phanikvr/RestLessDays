@@ -12,6 +12,19 @@ body {
 }
 
 #power_button {
+  width: 50px;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+}
+
+#volume_plus {
+  width: 50px;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+}
+
+#volume_minus {
+  width: 50px;
   background-color: Transparent;
   background-repeat:no-repeat;
 }

@@ -85,7 +85,6 @@ include("include/header_basic.php");
 
     <div class="controls">
       <input id="power_button" type="button" value="ON" />
-      <input id="play_back" type="button" value="PLAY" />
       <!--     
       CH<span id="channel_number">1</span>
       <input id="channel_plus" type="button" value="Ch +" />

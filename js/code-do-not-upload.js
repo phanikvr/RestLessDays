@@ -394,28 +394,37 @@ $(document).ready(function() {
   });
 
   $('#power_button').click(function(){
+
     if($(this).val() == 'ON') {
+
+      $(this).val('OFF');
       $('#channel_off').css('display','none');
       $('#command_prompt').css('display','block');
       //$('#command_prompt').css('background', 'url("' + sets[2] + '") top left no-repeat');
 
       //setTimeout(function(){
-        //$('#command_prompt').css('background','none');
-        //$('#command_prompt').css('background-color','#11230E');
-        $('#command_prompt div').css('display','block');
-        $('#prompt').focus();
+      //$('#command_prompt').css('background','none');
+      //$('#command_prompt').css('background-color','#11230E');
+      $('#command_prompt div').css('display','block');
+      $('#prompt').focus();
       //}, 1000);
-            /*
+      /*
       $('#channel_off').css('display','none');
       $('#gui').fadeIn(2000);
       $(this).val('OFF');
       */
+
     } else {
+
+      $(this).val('ON');
+      episode1Sound.pause();
+      firstScene();
       $('#channel_off').css('display','block');
       $('#gui').css('display','none');
       $('#command_prompt').css('display','none');
-      $(this).val('ON');
+      
     }
+
   });
 
   //$('#play_back').css('display','none');
@@ -460,17 +469,14 @@ $(document).ready(function() {
         1st argument is the function name. 
         2nd argument is the time.
         3rd argument is the parameter 
-        Notice how keys_pressed[index][1] needs to be converted to one variable 'key_pressed'
+        Notice how keys_pressed[index][1] needs to be converted to one variable 'key'
+        It's neater and probably the only way it works.
         */
         key = keys_pressed[index][1];
     	  setTimeout(simulateKeyPress, global_time, key);
 
     	}	
 
-    } else {
-      episode1Sound.pause();
-      firstScene();
-      $(this).val('PLAY');
     }
     
   });
