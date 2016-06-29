@@ -41,6 +41,9 @@ function simulateKeyPress(char) {
   e.which = char;
   e.keyCode = char;
   // Canvas Object
+  // setTimeout(function(){ $("#canvas_set").trigger(e); }, 820)
+  // Above needed for character to turn sideways because there must be a pause before
+  // you trigger event.
   $("#canvas_set").trigger(e);
 }
 
