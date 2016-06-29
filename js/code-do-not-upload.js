@@ -41,9 +41,6 @@ function simulateKeyPress(char) {
   e.which = char;
   e.keyCode = char;
   // Canvas Object
-  // setTimeout(function(){ $("#canvas_set").trigger(e); }, 820)
-  // Above needed for character to turn sideways because there must be a pause before
-  // you trigger event.
   $("#canvas_set").trigger(e);
 }
 
@@ -458,10 +455,16 @@ $(document).ready(function() {
     	    delay = keys_pressed[index][0] - keys_pressed[index-1][0];
     	  }
     	  global_time += delay;
-        /* Why is the following notation important? */
-    	  (function(index) {
-    	    setTimeout(function(){ simulateKeyPress(keys_pressed[index][1]); }, global_time);
-    	  })(index)
+        /* 
+        This is the best way to pass a variable to a Timeout function.
+        1st argument is the function name. 
+        2nd argument is the time.
+        3rd argument is the parameter 
+        Notice how keys_pressed[index][1] needs to be converted to one variable 'key_pressed'
+        */
+        key = keys_pressed[index][1];
+    	  setTimeout(simulateKeyPress, global_time, key);
+
     	}	
 
     } else {
