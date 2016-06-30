@@ -86,7 +86,7 @@ include("include/header_basic.php");
         </div>
     </div>
 
-    <div class="controls">
+    <div class="ft_player_controls">
       <input id="power_button" type="button" value="ON" />
       <!--     
       CH<span id="channel_number">1</span>
@@ -95,7 +95,7 @@ include("include/header_basic.php");
       -->
       <input id="volume_plus" type="button" value="V +" />
       <input id="volume_minus" type="button" value="V -" />
-      <div id="screen_logo">player</div>
+      <div id="ft_player_logo"><div id="ft_player_logo_img"></div>Player</div>
     </div>
 </div>
 

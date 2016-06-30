@@ -118,34 +118,36 @@ input[type=button]:hover {
   margin-right: auto;
   margin-top: 10px;
   width: 440px;
-  height: 464px;
+  height: 470px;
   border: 1px solid #989381;
   border-width: 1px 4px 4px 1px;
 } 
 
-#screen_logo {
-  background: url('../../images/logo_small_green_navy_filmtronic.png') no-repeat;
-  display: block;
-  background-size: 25px 25px;
-  width: 36px;
-  height: 25px;
-  float: right;
-  padding-left: 25px;
-  color: #374C92;
-  font-size: 11px;
-  padding-top: 3px;
-  font-weight: bold;
-}
-
-.controls {
-  width: 400px;
+.ft_player_controls {
+  width: 405px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 5px;
 }
 
-#controls {
-  width: 500px;
+.ft_player_controls input {
+  margin-top: 10px;
+}
+
+#ft_player_logo {
+  display: block;
+  float: right;
+  color: #374C92;
+  font-size: 7px;
+  font-weight: bold;
+  width: 25px;
+}
+
+#ft_player_logo_img {
+  background: url('../../images/logo_small_green_navy_filmtronic.png') no-repeat;
+  background-size: 24px 24px;
+  width: 30px;
+  height: 24px;
 }
 
 .dark_green {
