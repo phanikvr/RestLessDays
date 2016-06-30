@@ -70,6 +70,25 @@ input[type=button]:hover {
   display: block;
 }
 
+/* Might need a line off command_x functionality */
+.line {
+  border: 1px solid #11230E;
+  background: #11230E;
+  padding-left: 2px;
+  margin: 0px;
+  width: 380px;
+  font-size: 10px;
+  color: green;
+}
+
+.line input[type="text"] {
+  background-color: #FFFFFF;
+  border: none;
+  width: 320px;
+  color: green;
+  background: #11230E;
+}
+
 #gui {
   display: none;
 }
@@ -108,9 +127,14 @@ input[type=button]:hover {
   background: url('../../images/logo_small_green_navy_filmtronic.png') no-repeat;
   display: block;
   background-size: 25px 25px;
-  width: 25px;
+  width: 36px;
   height: 25px;
   float: right;
+  padding-left: 25px;
+  color: #374C92;
+  font-size: 11px;
+  padding-top: 3px;
+  font-weight: bold;
 }
 
 .controls {
@@ -157,25 +181,6 @@ input[type=button]:hover {
   float: left;
   margin-left: 40px;
   font-size: 10px;
-}
-
-.line {
-  display: none;
-  border: 1px solid #11230E;
-  background: #11230E;
-  padding-left: 2px;
-  margin: 0px;
-  width: 380px;
-  font-size: 10px;
-  color: green;
-}
-
-.line input[type="text"] {
-  background-color: #FFFFFF;
-  border: none;
-  width: 320px;
-  color: green;
-  background: #11230E;
 }
 
 .gossip_tab {

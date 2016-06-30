@@ -527,7 +527,9 @@ $(document).keydown(function(e) {
 
   if($('#command_prompt').css('display') == 'block') {
     if($('#prompt').val() == 'play' && e.which == 13) {
-      $('#play_back').click();
+      $('command_play').css('display','block');
+      $('line_off').css('display','block');
+      setTimeout($('#play_back').click(), 1000);
     }
   }
 

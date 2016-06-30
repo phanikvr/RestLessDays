@@ -25,38 +25,41 @@ include("include/header_basic.php");
 
     <div id="command_prompt" class="channel">
         <div style="float: left;height:400px; width:400px;overflow-y:scroll">
-           <div class="line">admin> Type "instructions" to see the game instructions or if you know them start typing your commands :)</div>
+            <div class="line">admin> Type "instructions" to see the game instructions or if you know them start typing your commands :)</div>
             <!-- id="prompt" is used because there will only ever be one current prompt. -->
             <div class="line">prompt> <input id="prompt" name="prompt" type="text" value="" /></div>
-            <div class="line">admin> Did you think that Cliff was an interesting character? y/n</div>
-            <div class="line">prompt> <input name="prompt" type="text" value="Y" /></div>
-            <div class="line">admin><br />70% of the public are currently saying 'YES' to  'Do you think that Cliff was interesting?'</div>
-            <div class="line">admin> Did you think that Cliff was an interesting character? y/n</div>
-            <div class="line">prompt> <input name="prompt" type="text" value="show statistics" /></div>
-            <div class="line">admin><br />
-            70% of the public are currently saying 'YES' to  'Do you think that Cliff was interesting?'<br />
-            20% of the public are currently saying 'YES' to  'Do you think that Roy was interesting?'</div>
-            <div class="line">prompt> <input name="prompt" type="text" value="show comments all" /></div>
-            <div class="line">admin><br />
-            sydney | This is a crap game<br />
-            melbourne | This is a crap game<br />
-            sydney | This is a crap game<br />
-            sydney | This is a crap game<br />
-            New York | This is a crap game<br />
-            New York | This is a crap game<br />
-            Ontario | This is a crap game<br />
-            </div>
-            <div class="line">prompt> <input name="prompt" type="text" value="show comments sydney" /><br />
-            sydney | This is a crap game<br />
-            sydney | This is a crap game<br />
-            sydney | This is a crap game<br />
-            sydney | This is a crap game<br />
-            sydney | This is a crap game<br />
-            sydney | This is a crap game<br />
-            sydney | This is a crap game<br />
-            </div>
-            sdfsfsdf<br />
-            sdfsdf<br />
+            <div class="line">loading...</div>
+        <!--
+        <div class="line">admin> Did you think that Cliff was an interesting character? y/n</div>
+        <div class="line">prompt> <input name="prompt" type="text" value="Y" /></div>
+        <div class="line">admin><br />70% of the public are currently saying 'YES' to  'Do you think that Cliff was interesting?'</div>
+        <div class="line">admin> Did you think that Cliff was an interesting character? y/n</div>
+        <div class="line">prompt> <input name="prompt" type="text" value="show statistics" /></div>
+        <div class="line">admin><br />
+        70% of the public are currently saying 'YES' to  'Do you think that Cliff was interesting?'<br />
+        20% of the public are currently saying 'YES' to  'Do you think that Roy was interesting?'</div>
+        <div class="line">prompt> <input name="prompt" type="text" value="show comments all" /></div>
+        <div class="line">admin><br />
+        sydney | This is a crap game<br />
+        melbourne | This is a crap game<br />
+        sydney | This is a crap game<br />
+        sydney | This is a crap game<br />
+        New York | This is a crap game<br />
+        New York | This is a crap game<br />
+        Ontario | This is a crap game<br />
+        </div>
+        <div class="line">prompt> <input name="prompt" type="text" value="show comments sydney" /><br />
+        sydney | This is a crap game<br />
+        sydney | This is a crap game<br />
+        sydney | This is a crap game<br />
+        sydney | This is a crap game<br />
+        sydney | This is a crap game<br />
+        sydney | This is a crap game<br />
+        sydney | This is a crap game<br />
+        </div>
+        sdfsfsdf<br />
+        sdfsdf<br />
+        -->
         </div>
     </div>
 
@@ -92,7 +95,7 @@ include("include/header_basic.php");
       -->
       <input id="volume_plus" type="button" value="V +" />
       <input id="volume_minus" type="button" value="V -" />
-      <div id="screen_logo"></div>
+      <div id="screen_logo">player</div>
     </div>
 </div>
 
