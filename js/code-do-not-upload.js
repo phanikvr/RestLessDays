@@ -15,7 +15,7 @@
 $('#canvas_set').fadeOut(2000);
 */
 
-// The Main Canvas Object and 2D Context variable
+// The Main Canvas character and 2D Context variable
 var canvas, ctx;
 // Array that holds Every Key that has been pressed in the recording process.
 var keys_pressed = [];
@@ -23,26 +23,30 @@ var keys_pressed = [];
 var i = 0;
 // Global Time to store the Time that goes by during the animation.
 var global_time = 0;
-// The "Cliff" character Object.
+// The "Cliff" character character.
 var cliff;
-// The "Mimi" character Object.
+// The "Mimi" character character.
 var mimi;
-// The "Roy" character Object.
+// The "Roy" character character.
 var roy;
 // Directory that holds character graphics
 var dir_chars = './images/chars/';
-// Directory that holds scene props/objects (e.g. bed etc.)
+// Directory that holds scene props/characters (e.g. bed etc.)
 var dir_props = './images/props/';
 // The Sets/Backgrounds of the show.
 var sets;
+// The command Prompt
+var commandPrompt;
+
 
 function simulateKeyPress(char) {
   e = jQuery.Event("keydown");
   e.which = char;
   e.keyCode = char;
-  // Canvas Object
+  // Canvas character
   $("#canvas_set").trigger(e);
 }
+
 
 /* OLD CODE: Channels Content */
 /*
@@ -56,8 +60,21 @@ function channel3Content() {
 }
 */
 
-/* OBJECT CONSTRUCTION - Class Variables */
-function object(name, type, x, y, w, h, image_state) {
+/* CLASS: commandPrompt */
+function commandPrompt() {
+  // The allowed Commands of the Command Prompt
+  this.commands = ['play','clear','instructions','show statistics','add comment x'];
+}
+/* */
+commandPrompt.prototype.commandFound = function(command) { 
+  if($.inArray(command, this.commands) == -1 ) {
+    return false;
+  }
+  return true;
+}
+
+/* CLASS: character */
+function character(name, type, x, y, w, h, image_state) {
   this.x = x;
   this.y = y;
   this.w = w;
@@ -76,10 +93,10 @@ function object(name, type, x, y, w, h, image_state) {
     this.img.src = dir_props + '/' + this.image_state + '.png';
   }
 }
-object.prototype.drawImage = function() {
+character.prototype.drawImage = function() {
   ctx.drawImage(this.img, this.x, this.y, this.w, this.h);	
 }
-object.prototype.charCommands = function(ctx, config) {  
+character.prototype.charCommands = function(ctx, config) {  
   
   $.each(config, function( command, params ) {
     str = "this."+ command + "(ctx";
@@ -90,7 +107,7 @@ object.prototype.charCommands = function(ctx, config) {
   });
   eval(str);
 }
-object.prototype.move = function(ctx, direction){
+character.prototype.move = function(ctx, direction){
   
   var stationary = 0;  
   ctx.clearRect(this.x,this.y,this.w,this.h);
@@ -166,7 +183,7 @@ object.prototype.move = function(ctx, direction){
 	this.draw(ctx);
   
 }
-object.prototype.talk = function(ctx) {
+character.prototype.talk = function(ctx) {
   ctx.clearRect(this.x,this.y,this.w,this.h);
 	
   pos1 = 'front';
@@ -195,7 +212,7 @@ object.prototype.talk = function(ctx) {
   ctx.globalCompositeOperation = 'source-over';
   
 }
-object.prototype.sit = function(ctx) {
+character.prototype.sit = function(ctx) {
   if(this.image_state.indexOf('left-standing') != -1  ||
 	 this.image_state.indexOf('left-walking') != -1   ||
 	 this.image_state.indexOf('right-standing') != -1 ||
@@ -213,7 +230,7 @@ object.prototype.sit = function(ctx) {
     this.draw(ctx);
   }
 }
-object.prototype.renderAttachedProps = function(ctx) {
+character.prototype.renderAttachedProps = function(ctx) {
   if(this.props.length) {
     $.each(this.props, function(index, prop) {
       // TEST IMG-OVER-IMG
@@ -224,11 +241,11 @@ object.prototype.renderAttachedProps = function(ctx) {
   }
   
 }
-object.prototype.draw = function(ctx) {
+character.prototype.draw = function(ctx) {
   this.changeImgSrc();
   ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
 } 
-object.prototype.changeImgSrc = function() {
+character.prototype.changeImgSrc = function() {
   //global_time += delay;	
   //setTimeout(function () {  
   this.img.src = dir_chars + this.name + '/' + this.clothing + '/' + this.image_state + '.png';
@@ -243,24 +260,27 @@ function firstScene() {
   // SMOOTH LINES - ON/OFF
   ctx.mozImageSmoothingEnabled = false;
   
-  mimi = new object('Mimi', 'character', 308, -120, 80, 114, 'front-standing-mouth-closed');
+  mimi = new character('Mimi', 'character', 308, -120, 80, 114, 'front-standing-mouth-closed');
   mimi.drawImage();
   
-  roy = new object('Roy', 'character', 308, -120, 80, 114, 'front-standing-mouth-closed');
+  roy = new character('Roy', 'character', 308, -120, 80, 114, 'front-standing-mouth-closed');
   roy.drawImage();
   
   ctx.globalCompositeOperation = 'destination-over';
   
-  bed = new object('bed', 'prop', 77, 349, 145, 112, 'hospital-bed-light-blue-blanket');
+  bed = new character('bed', 'prop', 77, 349, 145, 112, 'hospital-bed-light-blue-blanket');
   bed.drawImage();
   
-  cliff = new object('Cliff', 'character', 75, 321, 80, 114, 'left-standing-mouth-closed');
+  cliff = new character('Cliff', 'character', 75, 321, 80, 114, 'left-standing-mouth-closed');
   cliff.props.push(bed);
   cliff.drawImage();
  
 }
 
 $(document).ready(function() {
+
+  //Create a Command Prompt
+  commandPrompt = new commandPrompt();
   	
   // FORMAT is MP3 for now on.
   sound_file = './sounds/episode01-part2';
@@ -270,7 +290,7 @@ $(document).ready(function() {
     volume: 100
   });
     
-  /* Create the Canvas Object */
+  /* Create the Canvas character */
   canvas = document.getElementById('canvas_set');
   /* Set the 2D Context */
   ctx = canvas.getContext("2d");
@@ -526,7 +546,8 @@ $(document).keydown(function(e) {
   //alert(e.which);
 
   if($('#command_prompt').css('display') == 'block') {
-    if($('#prompt').val() == 'play' && e.which == 13) {
+
+    if($('#prompt').val() == 'play' && commandPrompt.commandFound('play') && e.which == 13) {
       $('command_play').css('display','block');
       $('line_off').css('display','block');
       setTimeout($('#play_back').click(), 1000);
@@ -638,10 +659,10 @@ function doMouseDown(event){
 /**
  * @author Joseph Lenton - PlayMyCode.com
  *
- * @param first An ImageData object from the first image we are colliding with.
+ * @param first An ImageData character from the first image we are colliding with.
  * @param x The x location of 'first'.
  * @param y The y location of 'first'.
- * @param other An ImageData object from the second image involved in the collision check.
+ * @param other An ImageData character from the second image involved in the collision check.
  * @param x2 The x location of 'other'.
  * @param y2 The y location of 'other'.
  * @param isCentred True if the locations refer to the centre of 'first' and 'other', false to specify the top left corner.
