@@ -283,8 +283,9 @@ $(document).ready(function() {
   commandPrompt = new commandPrompt();
   	
   // FORMAT is MP3 for now on.
-  sound_file = './sounds/episode01-part2';
-
+  // Review Sound File Below (could be too funny with dialogue)
+  // sound_file = './sounds/2009-dietmarhess-excl-show_beats_01_proud_music_preview';
+  sound_file = './sounds/on_the_town_proud_music_preview';
   var episode1Sound = new buzz.sound( sound_file, {
     formats: [ "mp3" ],
     volume: 100
@@ -331,6 +332,17 @@ $(document).ready(function() {
   // Width:420px was used because we had to cater for the 0.84 Scale on Context
   // due to Eye size of character.
   $('#canvas_set').css('background-size', '420px 400px');
+
+  /* ALERT: Speech Bubble example - currently NOT WORKING */
+  /*
+  ctx.fillStyle = "white";
+  ctx.fillRect(0,0, 200, 200);
+  // draw font in red
+  ctx.fillStyle = "red";
+  ctx.font = "20pt sans-serif";
+  ctx.fillText("Canvas Rocks!", 5, 100);
+  ctx.strokeText("Canvas Rocks!", 5, 130);
+  */
   
   global_time += 3000;
   setTimeout(function(){ 
@@ -469,7 +481,7 @@ $(document).ready(function() {
       episode1Sound.load();
       $('#canvas_set').css('background-image', 'url("' + sets[0] + '")');
       firstScene();  
-      setTimeout(function(){  episode1Sound.play(); }, 9000);
+      episode1Sound.play();
 
       //alert(JSON.stringify(keys_pressed));
       //SAVED FIRST EPISODE COMMANDS

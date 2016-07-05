@@ -20,7 +20,7 @@ include("include/header_basic.php");
     </div>
     <div id="gui" class="channel">
       <!-- The Canvas width/height can shrink for external website integration -->
-      <canvas width="400" height="400" id="canvas_set"></canvas>  
+      <canvas width="400" height="400" id="canvas_set">dfsdjfj sdfsdf</canvas>  
     </div>
 
     <div id="command_prompt" class="channel">
