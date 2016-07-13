@@ -7,26 +7,33 @@ body {
   margin: 0;
   vertical-align: top;
   background: #FFFFFF;
-  font-family: verdana;
-  height:100%;
+  font-family: chalkboard;
+  font-weight: 20px;
+  height: 100%;
 }
 
 #power_button {
   width: 50px;
   background-color: Transparent;
   background-repeat:no-repeat;
+  font-size: 12px;
+  font-family: chalkboard;
 }
 
 #volume_plus {
   width: 50px;
   background-color: Transparent;
   background-repeat:no-repeat;
+  font-size: 12px;
+  font-family: chalkboard;
 }
 
 #volume_minus {
   width: 50px;
   background-color: Transparent;
   background-repeat:no-repeat;
+  font-size: 12px;
+  font-family: chalkboard;
 }
 
 input[type=button] {
@@ -77,16 +84,17 @@ input[type=button]:hover {
   padding-left: 2px;
   margin: 0px;
   width: 380px;
-  font-size: 10px;
+  font-size: 20px;
   color: green;
 }
 
 .line input[type="text"] {
   background-color: #FFFFFF;
   border: none;
-  width: 320px;
+  width: 200px;
   color: green;
   background: #11230E;
+  font-size: 20px;
 }
 
 #gui {

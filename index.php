@@ -139,7 +139,7 @@ used (High Volume may be annoying).<br />
   <div class="gossip_section">
     <h2>DEMO GAME</h2>
     The Restless Days is an Interactive Soap Opera Game.<br />
-    Help create the next show. Questions and Statements are welcome :)<br />
+    Help create the next show. Questions and Statements are welcome.<br />
     Great Gossip will be highlighted <span class="great_question">green</span> by our administrators.
     If you submit an entry that becomes highlighted, we will let you know by email too (if you leave your email).
     Highlighted Comments will always appear at the top of the pile.
