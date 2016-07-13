@@ -25,7 +25,7 @@ include("include/header_basic.php");
 
     <div id="command_prompt" class="channel">
         <div style="float: left;height:400px; width:400px;overflow-y:scroll">
-            <div class="line">admin> Type "instructions" to see the game instructions or if you know them start typing your commands :)</div>
+            <div class="line">admin> Type "instructions" to see the game instructions or if you know them start typing your commands.</div>
             <!-- id="prompt" is used because there will only ever be one current prompt. -->
             <div class="line">prompt> <input id="prompt" name="prompt" type="text" value="" /></div>
             <!--
