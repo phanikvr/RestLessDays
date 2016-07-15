@@ -63,7 +63,7 @@ function channel3Content() {
 /* CLASS: commandPrompt */
 function commandPrompt() {
   // The allowed Commands of the Command Prompt
-  this.commands = ['play','clear','instructions','show statistics','add comment x'];
+  this.commands = ['start The Restless Days','clear','instructions','show statistics','add comment x'];
 }
 /* */
 commandPrompt.prototype.commandFound = function(command) { 
@@ -559,7 +559,7 @@ $(document).keydown(function(e) {
 
   if($('#command_prompt').css('display') == 'block') {
 
-    if($('#prompt').val() == 'play' && commandPrompt.commandFound('play') && e.which == 13) {
+    if($('#prompt').val() == 'start The Restless Days' && commandPrompt.commandFound('start The Restless Days') && e.which == 13) {
       $('command_play').css('display','block');
       $('line_off').css('display','block');
       setTimeout($('#play_back').click(), 1000);
@@ -569,7 +569,7 @@ $(document).keydown(function(e) {
   if($('#gui').css('display') == 'block') {
 					
     switch(e.which) {
-      case 27:
+      case 27: // Escape key - Go back to Command Line
         $('#gui').css('display','none');
         $('#command_prompt').css('display','block');
         // ALERT: Sound BUGS WILL BE ANNOYING!!!! Watch out!!!!

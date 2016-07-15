@@ -91,10 +91,11 @@ input[type=button]:hover {
 .line input[type="text"] {
   background-color: #FFFFFF;
   border: none;
-  width: 200px;
+  width: 298px;
   color: green;
   background: #11230E;
   font-size: 20px;
+  font-family: chalkboard;
 }
 
 #gui {
