@@ -19,10 +19,11 @@
   <script src="./js/game.js"></script>
 </head>
 <body>
+<!--
 <header style="background-color:#EAEAEA;padding: 4px; height: 50px">
-  
   <a style="float: left" id="logo" href="/"><img width="50" src="./images/logo_small_green_navy_filmtronic.png" /></a>
   <div class="app_title">&nbsp;&nbsp;<?php print $app_title;?></div>
+--> 
   <!--
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <input id="back" type="button" value="< B A C K" />

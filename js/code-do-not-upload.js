@@ -63,11 +63,11 @@ function channel3Content() {
 /* CLASS: commandPrompt */
 function commandPrompt() {
   // The allowed Commands of the Command Prompt
-  this.commands = ['start The Restless Days','clear','instructions','show statistics','add comment x'];
+  this.commands = ['play the restless days','instructions','show statistics','add comment x'];
 }
 /* */
 commandPrompt.prototype.commandFound = function(command) { 
-  if($.inArray(command, this.commands) == -1 ) {
+  if($.inArray(command.toLowerCase(), this.commands) == -1 ) {
     return false;
   }
   return true;
@@ -558,8 +558,9 @@ $(document).keydown(function(e) {
   //alert(e.which);
 
   if($('#command_prompt').css('display') == 'block') {
-
-    if($('#prompt').val() == 'start The Restless Days' && commandPrompt.commandFound('start The Restless Days') && e.which == 13) {
+    if($('#prompt').val().toLowerCase() == 'play the restless days'
+       && commandPrompt.commandFound('play the restless days') 
+       && e.which == 13) {
       $('command_play').css('display','block');
       $('line_off').css('display','block');
       setTimeout($('#play_back').click(), 1000);

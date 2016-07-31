@@ -2,7 +2,7 @@
 /**
  * Game Home file.
  */
-$app_title = "T H E &nbsp;R E S T L E S S &nbsp;D A Y S";
+$app_title = "P l a y e r";
 #include("include/general.inc.php");
 include("include/header_basic.php");
 ?>
@@ -25,12 +25,13 @@ include("include/header_basic.php");
 
     <div id="command_prompt" class="channel">
         <div style="float: left;height:400px; width:400px;overflow-y:scroll">
-            <div class="line">admin> In the prompt below
-            where the cursor is, type "start [name of game]" to begin that game. 
-            e.g. To begin "The Restless Days" game, type this in the prompt
-            below: start The Restless Days</div>
+            <div class="line">admin> To play "The Restless Days" game<br />
+            type the following in the prompt:<br />
+            play The Restless Days<br />
+            To play any other game type:<br />
+            play [name-of-game]<br /></div>
             <!-- id="prompt" is used because there will only ever be one current prompt. -->
-            <div class="line">prompt> <input id="prompt" name="prompt" type="text" value="" /></div>
+            <div class="line">prompt><input id="prompt" name="prompt" type="text" value="" /></div>
             <!--
             <div class="line">command not found</div>
             <div class="line">loading...</div>
@@ -101,12 +102,13 @@ include("include/header_basic.php");
       -->
       <input id="volume_plus" type="button" value="V +" />
       <input id="volume_minus" type="button" value="V -" />
-      <div id="ft_player_logo"><div id="ft_player_logo_img"></div>Player</div>
+      <div id="ft_player_logo"><div id="ft_player_logo_img"></div> Player</div>
     </div>
 </div>
 
 <br /><br />
 <b>IMPORTANT NOTES/TASKS</b><br />
+- DO NOW: Speech Bubble Functionalty - Sustain the bubble for x seconds. Store speech text in array.<br />
 - Do a 'clear' command.<br />
 - <b>Make money! even if it's one dollar $$$$</b><br />
 - SOUND BUGS WILL BE ANNOYING > Watch out for them. TEST and RE-TEST Sound Usage!!!!!<br />
