@@ -108,7 +108,7 @@ include("include/header_basic.php");
 
 <br /><br />
 <b>IMPORTANT NOTES/TASKS</b><br />
-- DO NOW: Speech Bubble Functionalty - Sustain the bubble for x seconds. Store speech text in array.<br />
+- NOW: Speech Bubble Functionalty - Sustain the bubble for x seconds. Store speech text in array.<br />
 - Do a 'clear' command.<br />
 - <b>Make money! even if it's one dollar $$$$</b><br />
 - SOUND BUGS WILL BE ANNOYING > Watch out for them. TEST and RE-TEST Sound Usage!!!!!<br />
