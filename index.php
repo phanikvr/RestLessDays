@@ -2,7 +2,7 @@
 /**
  * Game Home file.
  */
-$app_title = "P l a y e r";
+$app_title = "F T - P l a y e r";
 #include("include/general.inc.php");
 include("include/header_basic.php");
 ?>
@@ -94,14 +94,15 @@ include("include/header_basic.php");
     </div>
 
     <div class="ft_player_controls">
-      <input id="power_button" type="button" value="ON" />
+      <!-- <input type="button" value="ON" /> -->
       <!--     
       CH<span id="channel_number">1</span>
       <input id="channel_plus" type="button" value="Ch +" />
       <input id="channel_minus" type="button" value="Ch -" />
       -->
-      <input id="volume_plus" type="button" value="V +" />
-      <input id="volume_minus" type="button" value="V -" />
+      <input id="power_button" type="button" value="Pay $1 to Start" />
+      <input type="button" value="V +" />
+      <input type="button" value="V -" />
       <div id="ft_player_logo"><div id="ft_player_logo_img"></div> Player</div>
     </div>
 </div>

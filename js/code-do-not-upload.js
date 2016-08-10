@@ -427,7 +427,7 @@ $(document).ready(function() {
 
   $('#power_button').click(function(){
 
-    if($(this).val() == 'ON') {
+    if($(this).val() == 'Pay $1 to Start') {
 
       $(this).val('OFF');
       $('#channel_off').css('display','none');
@@ -448,7 +448,7 @@ $(document).ready(function() {
 
     } else {
 
-      $(this).val('ON');
+      $(this).val('Pay $1 to Start');
       episode1Sound.pause();
       firstScene();
       $('#channel_off').css('display','block');

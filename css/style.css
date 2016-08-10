@@ -13,33 +13,11 @@ body {
 }
 
 #power_button {
-  width: 50px;
+  width: 185px;
   /*
   background-color: Transparent;
   background-repeat:no-repeat;
   */
-  font-size: 18px;
-  font-family: chalkboard;
-}
-
-#volume_plus {
-  width: 50px;
-  /*
-  background-color: Transparent;
-  background-repeat:no-repeat;
-  */
-  font-size: 18px;
-  font-family: chalkboard;
-}
-
-#volume_minus {
-  width: 50px;
-  /*
-  background-color: Transparent;
-  background-repeat:no-repeat;
-  */
-  font-size: 18px;
-  font-family: chalkboard;
 }
 
 input[type=button] {
@@ -148,6 +126,8 @@ input[type=button]:hover {
 
 .ft_player_controls input {
   margin-top: 10px;
+  color: #21600e;
+  font-size: 16px;
 }
 
 #ft_player_logo {
