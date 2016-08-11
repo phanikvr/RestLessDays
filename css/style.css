@@ -272,19 +272,11 @@ h2 {
 }
 
 .logo_small_text {
-  color: #21600e;
-  padding-left:20px;
-  font-size: 14px;
-  font-weight: bold;
-  float: left;
-}
-
-.logo_small_text2 {
-  color: #21600e;
-  padding-left:20px;
-  font-size: 14px;
-  font-weight: bold;
-  float: left;
+ color: #21600e;
+ float: left;
+ font-size: 14px;
+ font-weight: bold;
+ margin-top: 14px;
 }
 
 .text_coming_soon {
@@ -365,4 +357,18 @@ h2 {
 
 .short_desc {
   overflow: true;
+}
+
+.top_links {
+  float: right;
+  margin-top: 14px;
+  margin-right: 20px;
+  color: #113B69;
+  font-size: 14px;
+}
+
+.top_links a {
+  color: #113B69;
+  text-decoration: none;
+  font-size: 14px;
 }
