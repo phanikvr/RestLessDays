@@ -101,8 +101,9 @@ include("include/header_basic.php");
       <input id="channel_minus" type="button" value="Ch -" />
       -->
       <input id="power_button" type="button" value="PAYPAL $1 TO PLAY" />
-      <input type="button" value="V +" />
-      <input type="button" value="V -" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input id="volume_plus" type="button" value="V +" />
+      <input id="volume_minus" type="button" value="V -" />
       <div id="ft_player_logo"><div id="ft_player_logo_img"></div> Player</div>
     </div>
 </div>
