@@ -261,6 +261,9 @@ h2 {
 
 #tm_header_symbol{
   color: #358901;
+  margin-top:0px;
+  float: left;
+  font-size: 14px;
 }
 
 #header {
