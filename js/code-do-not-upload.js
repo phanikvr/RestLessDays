@@ -526,6 +526,9 @@ $(document).ready(function() {
   
   var canvas_tmp;
   
+  /*
+  // Get below working perhaps for next version of RD
+  // or any other cartoon show (i.e Food Police).
   $('#zoom').click(function(){
     ctx.save();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -542,6 +545,7 @@ $(document).ready(function() {
     cliff.charCommands(ctx, {'talk':[]});
     roy.charCommands(ctx, {'talk':[]});
   });
+  */
   
 });
 

@@ -126,8 +126,8 @@ input[type=button]:hover {
 
 .ft_player_controls input {
   margin-top: 10px;
-  color: #716D5C;
-  font-size: 16px;
+  color: #2B6F1C;
+  font-size: 14px;
 }
 
 #ft_player_logo {
@@ -145,6 +145,10 @@ input[type=button]:hover {
   background-size: 40px 35px;
   width: 40px;
   height: 34px;
+}
+
+#play_back {
+  display: none;
 }
 
 .dark_green {

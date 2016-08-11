@@ -100,13 +100,13 @@ include("include/header_basic.php");
       <input id="channel_plus" type="button" value="Ch +" />
       <input id="channel_minus" type="button" value="Ch -" />
       -->
-      <input id="power_button" type="button" value="Pay $1 to Start" />
+      <input id="power_button" type="button" value="PAYPAL $1 TO PLAY" />
       <input type="button" value="V +" />
       <input type="button" value="V -" />
       <div id="ft_player_logo"><div id="ft_player_logo_img"></div> Player</div>
     </div>
 </div>
-
+<input id="play_back" type="button" value="PLAY" />
 <?php
 include("include/footer_basic.php");
 ?>
