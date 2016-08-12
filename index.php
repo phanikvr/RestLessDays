@@ -27,7 +27,7 @@ include("include/header_basic.php");
             <div class="line">admin> To play "The Restless Days" game<br />
             type the following in the prompt:<br />
             play The Restless Days<br />
-            To play any other game type:<br />
+            type the following to play other games:<br />
             play [name-of-game]<br /></div>
             <!-- id="prompt" is used because there will only ever be one current prompt. -->
             <div class="line">prompt><input id="prompt" name="prompt" type="text" value="" /></div>
