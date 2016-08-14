@@ -19,7 +19,8 @@ include("include/header_basic.php");
     </div>
     <div id="gui" class="channel">
       <!-- The Canvas width/height can shrink for external website integration -->
-      <div style="margin-left:100px;margin-top:200px;border: 1px solid #000000;padding: 10px;position: absolute;z-index:2">Cliff, your back!</div>
+      <div style="font-size: 14px;margin-left:212px;margin-top:220px;border: 1px solid #86826C;padding: 5px;position: absolute;z-index:2;color:#86826C;">Roy: <b>Cliff, your back!</b></div>
+      <div style="font-size: 14px;margin-left:10px;margin-top:220px;border: 1px solid #86826C;padding: 5px;position: absolute;z-index:2;color:#86826C;">Cliff: <b>What about it.</b></div>
       <canvas width="400" height="400" id="canvas_set"></canvas>  
       
     </div>

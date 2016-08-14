@@ -118,7 +118,7 @@ input[type=button]:hover {
 } 
 
 .ft_player_controls {
-  width: 405px;
+  width: 412px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 5px;
@@ -126,7 +126,7 @@ input[type=button]:hover {
 
 .ft_player_controls input {
   margin-top: 10px;
-  color: #2B6F1C;
+  color: #86826C;
   font-size: 14px;
 }
 
@@ -137,7 +137,8 @@ input[type=button]:hover {
   font-size: 10px;
   font-weight: bold;
   width: 25px;
-  margin-right: 14px;
+  margin-right: 16px;
+  margin-left: 10px;
 }
 
 #ft_player_logo_img {
