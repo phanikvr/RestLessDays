@@ -63,9 +63,17 @@ function channel3Content() {
 /* CLASS: commandPrompt */
 function commandPrompt() {
   // The allowed Commands of the Command Prompt
-  this.commands = ['play the restless days','instructions','show statistics','add comment x'];
+  this.commands = ['play the restless days 1','instructions','show statistics','add comment x'];
 }
 /* */
+commandPrompt.prototype.start = function() { 
+  $('#power_button').visibility('hidden');
+  $('#channel_off').css('display','none');
+  $('#command_prompt').css('display','block');
+  $('#command_prompt div').css('display','block');
+  $('#prompt').focus();
+  return true;
+}
 commandPrompt.prototype.commandFound = function(command) { 
   if($.inArray(command.toLowerCase(), this.commands) == -1 ) {
     return false;
@@ -281,6 +289,14 @@ $(document).ready(function() {
 
   //Create a Command Prompt
   commandPrompt = new commandPrompt();
+  
+  if(document.location == 'http://dev.filmtronic.com/the-restless-days/?payment=success' ||
+    document.location == 'http://www.filmtronic.com/the-restless-days/?payment=success') {
+    commandPrompt.start();
+  } else if(document.location == 'http://dev.filmtronic.com/the-restless-days/?payment=cancelled' ||
+    document.location == 'http://www.filmtronic.com/the-restless-days/?payment=cancelled') {
+    $('#power_button').val('Try Again');
+  }
   	
   // FORMAT is MP3 for now on.
   // Review Sound File Below (could be too funny with dialogue)
@@ -427,34 +443,31 @@ $(document).ready(function() {
 
   $('#power_button').click(function(){
 
-    if($(this).val() == 'PAYPAL $1 TO PLAY') {
-
-      $(this).val('OFF');
-      $('#channel_off').css('display','none');
-      $('#command_prompt').css('display','block');
+    if($(this).val() == 'PayPal $1 to Play' ||
+       $(this).val() == 'Try Again') {
+      $(this).val('Going to PayPal');
+      setTimeout(function(){ $('#power_button').val('Going to PayPal.'); }, 0);
+      setTimeout(function(){ $('#power_button').val('Going to PayPal..'); }, 500);
+      setTimeout(function(){ $('#power_button').val('Going to PayPal...'); }, 600);
+      $('#paypal_form').submit();
       //$('#command_prompt').css('background', 'url("' + sets[2] + '") top left no-repeat');
-
       //setTimeout(function(){
       //$('#command_prompt').css('background','none');
       //$('#command_prompt').css('background-color','#11230E');
-      $('#command_prompt div').css('display','block');
-      $('#prompt').focus();
       //}, 1000);
       /*
       $('#channel_off').css('display','none');
       $('#gui').fadeIn(2000);
       $(this).val('OFF');
       */
-
     } else {
-
-      $(this).val('PAYPAL $1 TO PLAY');
-      episode1Sound.pause();
-      firstScene();
-      $('#channel_off').css('display','block');
-      $('#gui').css('display','none');
-      $('#command_prompt').css('display','none');
-      
+      $(this).css('visibility','hidden');
+      //$(this).val('PayPal $1 to play');
+      //episode1Sound.pause();
+      //firstScene();
+      //$('#channel_off').css('display','block');
+      //$('#gui').css('display','none');
+      //$('#command_prompt').css('display','none');      
     }
 
   });
@@ -562,8 +575,8 @@ $(document).keydown(function(e) {
   //alert(e.which);
 
   if($('#command_prompt').css('display') == 'block') {
-    if($('#prompt').val().toLowerCase() == 'play the restless days'
-       && commandPrompt.commandFound('play the restless days') 
+    if($('#prompt').val().toLowerCase() == 'play the restless days 1'
+       && commandPrompt.commandFound('play the restless days 1') 
        && e.which == 13) {
       $('command_play').css('display','block');
       $('line_off').css('display','block');

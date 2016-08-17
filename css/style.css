@@ -130,6 +130,10 @@ input[type=button]:hover {
   font-size: 14px;
 }
 
+.ft_player_controls form {
+  display: none;
+}
+
 #ft_player_logo {
   display: block;
   float: right;

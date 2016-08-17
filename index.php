@@ -27,11 +27,10 @@ include("include/header_basic.php");
 
     <div id="command_prompt" class="channel">
         <div style="float: left;height:400px; width:400px;overflow-y:scroll">
-            <div class="line">admin> To play "The Restless Days" game<br />
-            type the following in the prompt:<br />
-            play The Restless Days<br />
+            <div class="line">admin> the command to play the first episode of the restless days is:<br />
+            play the restless days 1<br />
             type the following to play other games:<br />
-            play [name-of-game]<br /></div>
+            play [name-of-game] [episode-number]<br /></div>
             <!-- id="prompt" is used because there will only ever be one current prompt. -->
             <div class="line">prompt><input id="prompt" name="prompt" type="text" value="" /></div>
             <!--
@@ -102,12 +101,21 @@ include("include/header_basic.php");
       <input id="channel_plus" type="button" value="Ch +" />
       <input id="channel_minus" type="button" value="Ch -" />
       -->
-      <input id="power_button" type="button" value="PAYPAL $1 TO PLAY" />
+      <input id="power_button" type="button" value="PayPal $1 to Play" />
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <input id="volume_plus" type="button" value="V +" />
       <input id="volume_minus" type="button" value="V -" />
       <div id="ft_player_logo"><div id="ft_player_logo_img"></div> Player</div>
+      <form id="paypal_form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="LJX3TBDZP83HU">
+        <input type="image" src="https://www.paypalobjects.com/en_AU/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_AU/i/scr/pixel.gif" width="1" height="1">
+      </form>
     </div>
+
+
+
 </div>
 <input id="play_back" type="button" value="PLAY" />
 <?php
