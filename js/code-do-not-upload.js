@@ -67,7 +67,7 @@ function commandPrompt() {
 }
 /* */
 commandPrompt.prototype.start = function() { 
-  $('#power_button').visibility('hidden');
+  $('#power_button').css('visibility','hidden');
   $('#channel_off').css('display','none');
   $('#command_prompt').css('display','block');
   $('#command_prompt div').css('display','block');
@@ -284,7 +284,6 @@ function firstScene() {
   cliff.drawImage();
  
 }
-
 $(document).ready(function() {
 
   //Create a Command Prompt

@@ -27,7 +27,9 @@ include("include/header_basic.php");
 
     <div id="command_prompt" class="channel">
         <div style="float: left;height:400px; width:400px;overflow-y:scroll">
-            <div class="line">admin> the command to play the first episode of the restless days is:<br />
+            <div class="line">admin> Thank you for purchasing access to this game.
+            You can keep playing as long as you keep this Browser Tab open.<br />
+            The command to play the first episode of the restless days is:<br />
             play the restless days 1<br />
             type the following to play other games:<br />
             play [name-of-game] [episode-number]<br /></div>
