@@ -580,7 +580,7 @@ $(document).keydown(function(e) {
        && e.which == 13) {
       $('command_play').css('display','block');
       $('line_off').css('display','block');
-      setTimeout($('#play_back').click(), 1000);
+      setTimeout(function() { $('#play_back').click() }, 1000);
     }
   }
 
