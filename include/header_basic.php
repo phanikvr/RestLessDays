@@ -9,7 +9,7 @@ $title = "FT - Film Reviews and Computer Games";
 <head>
   <title><?php print $title;?></title>
   <meta name="description" content="Film Reviews and Computer Games" />
-  <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen" />
   <script src="./js/jquery-2.1.1.min.js"></script>
   <!--
   <script src="./js/core.js?<?php// print substr( md5(rand()), 0, 7); ?>" type="text/javascript" charset="utf-8"></script>
