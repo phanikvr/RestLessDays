@@ -269,10 +269,10 @@ function firstScene() {
   // SMOOTH LINES - ON/OFF
   ctx.mozImageSmoothingEnabled = false;
   
-  mimi = new character('Mimi', 'character', 308, -120, 80, 114, 'front-standing-mouth-closed');
+  mimi = new character('mimi', 'character', 308, -120, 80, 114, 'front-standing-mouth-closed');
   mimi.drawImage();
   
-  roy = new character('Roy', 'character', 308, -120, 80, 114, 'front-standing-mouth-closed');
+  roy = new character('roy', 'character', 308, -120, 80, 114, 'front-standing-mouth-closed');
   roy.drawImage();
   
   ctx.globalCompositeOperation = 'destination-over';
@@ -280,7 +280,7 @@ function firstScene() {
   bed = new character('bed', 'prop', 77, 349, 145, 112, 'hospital-bed-light-blue-blanket');
   bed.drawImage();
   
-  cliff = new character('Cliff', 'character', 75, 321, 80, 114, 'left-standing-mouth-closed');
+  cliff = new character('cliff', 'character', 75, 321, 80, 114, 'left-standing-mouth-closed');
   cliff.props.push(bed);
   cliff.drawImage();
  
