@@ -67,6 +67,7 @@ function commandPrompt() {
 }
 /* */
 commandPrompt.prototype.start = function() { 
+  //$('#power_button').val('Return to prompt>');
   $('#power_button').css('visibility','hidden');
   $('#channel_off').css('display','none');
   $('#command_prompt').css('display','block');
