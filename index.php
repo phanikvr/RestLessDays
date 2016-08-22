@@ -21,10 +21,14 @@ echo "http referer:" . $_SERVER["HTTP_REFERER"] . "<br />";
     </div>
     <div id="gui" class="channel">
       <!-- The Canvas width/height can shrink for external website integration -->
-      <div style="height: 2px;width: 10px;font-size: 14px;margin-left:212px;margin-top:249px;border-bottom-style:none;border: 1px solid #86826C;border-width: 0px 1px 1px 1px;padding: 5px;position: absolute;z-index:5;color:#86826C;"></div>
+      <div style="height: 2px;width: 10px;font-size: 14px;margin-left:212px;margin-top:249px;border-bottom-style:none;border: 1px solid #86826C;border-width: 0px 1px 1px 1px;padding: 5px;position: absolute;z-index:2;color:#86826C;"></div>
+      <div style="height: 2px;width: 131px;font-size: 14px;margin-left:233px;margin-top:249px;border-bottom-style:none;border: 1px solid #86826C;border-width: 1px 0px 0px 0px;padding: 5px;position: absolute;z-index:2;color:#86826C;"></div>
       <div style="height: 120px;width: 150px;font-size: 14px;margin-left:212px;margin-top:118px;border: 1px solid #86826C;border-bottom-width: 0px;padding: 5px;position: absolute;z-index:2;color:#86826C;">Roy: <b>Cliff, your back! Text text text text text text.</b></div>
       
-      <div style="height: 120px;font-size: 14px;margin-left:24px;margin-top:118px;border: 1px solid #86826C;padding: 5px;position: absolute;z-index:2;color:#86826C;">Cliff: <b>What about it.</b></div>
+      <div style="height: 2px;width: 10px;font-size: 14px;margin-left:24px;margin-top:249px;border-bottom-style:none;border: 1px solid #86826C;border-width: 0px 1px 1px 1px;padding: 5px;position: absolute;z-index:2;color:#86826C;"></div>
+      <div style="height: 2px;width: 131px;font-size: 14px;margin-left:46px;margin-top:249px;border-bottom-style:none;border: 1px solid #86826C;border-width: 1px 0px 0px 0px;padding: 5px;position: absolute;z-index:2;color:#86826C;"></div>
+      <div style="height: 120px;font-size: 14px;margin-left:24px;margin-top:118px;border: 1px solid #86826C;border-bottom-width: 0px;padding: 5px;position: absolute;z-index:2;color:#86826C;">Cliff: <b>What about it.</b></div>
+
       <!-- <div style="height: 4px;font-size: 14px;width: 10px;margin-left:10px;margin-top:240px;border: 1px solid #86826C;padding: 5px;position: absolute;z-index:2;color:#86826C;"></div>-->
       <canvas width="400" height="400" id="canvas_set"></canvas>  
       
