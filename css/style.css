@@ -70,7 +70,7 @@ input[type=button]:hover {
   width: 380px;
   font-size: 20px;
   color: green;
-  font-family: chalkboard, sans-serif;
+  font-family: chalkboard, "Comic Sans MS"
 }
 
 .line input[type="text"] {
@@ -80,7 +80,7 @@ input[type=button]:hover {
   color: green;
   background: #11230E;
   font-size: 20px;
-  font-family: chalkboard, sans-serif;
+  font-family: chalkboard, "Comic Sans MS";
 }
 
 #gui {
