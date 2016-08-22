@@ -37,9 +37,6 @@ var dir_props = './images/props/';
 var sets;
 // The command Prompt
 var commandPrompt;
-// The big episodes array holding all the dialogue for all the episodes.
-var dialogue;
-
 
 function simulateKeyPress(char) {
   e = jQuery.Event("keydown");
@@ -61,6 +58,10 @@ function channel2Content() {
 function channel3Content() {  
 }
 */
+
+String.prototype.capitalize = function() {
+    return string[0].toUpperCase() + string.substring(1)
+}
 
 /* CLASS: commandPrompt */
 function commandPrompt() {
@@ -295,6 +296,11 @@ $(document).ready(function() {
   if(document.location == 'http://dev.filmtronic.com/the-restless-days/?payment=success' ||
     document.location == 'http://www.filmtronic.com/the-restless-days/?payment=success') {
     commandPrompt.start();
+
+    // capitalize() NOT working.
+    $('#speech_bubble_2a').html(Object.keys(dialogue[1][1]) + ': <b>' + dialogue[1][1]['roy'] + '</b>');
+    $('#speech_bubble_1a').html(Object.keys(dialogue[1][2]) + ': <b>' + dialogue[1][2]['cliff'] + '</b>');
+
   } else if(document.location == 'http://dev.filmtronic.com/the-restless-days/?payment=cancelled' ||
     document.location == 'http://www.filmtronic.com/the-restless-days/?payment=cancelled') {
     $('#power_button').val('Try Again');

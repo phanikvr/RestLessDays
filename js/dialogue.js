@@ -1,3 +1,11 @@
+var dialogue = []
+
+dialogue[1] = []
+dialogue[1][1] = []
+dialogue[1][1]['roy'] = 'Cliff, your back.';
+dialogue[1][2] = []
+dialogue[1][2]['cliff'] = 'What about it?';
+/*
 dialogue[1][1]['roy']    = "Cliff, your back.";
 dialogue[1][2]['cliff']  = "What about it?";
 dialogue[1][3]['roy']    = "No, I mean your back. You're back from your coma. Your alive!";
@@ -22,4 +30,5 @@ dialogue[1][21]['roy']   = "I'm sorry.";
 dialogue[1][22]['cliff'] = "Look at me! Look at me! Damn you fashion night finger food. Whhhyyy!";
 dialogue[1][23]['roy']   = "Hey, you'll bounce back Cliff. These things happen. Well, not to most of us. But these things happen";
 dialogue[1][24]['cliff'] = "I don't know anymore. I guess so.";
-dialogue[1][24]['cliff'] = "Your back and that's the main thing.";
+dialogue[1][24]['cliff'] = "Your back and that's the.";
+*/
