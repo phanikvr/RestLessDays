@@ -37,6 +37,8 @@ var dir_props = './images/props/';
 var sets;
 // The command Prompt
 var commandPrompt;
+// The big episodes array holding all the dialogue for all the episodes.
+var dialogue;
 
 
 function simulateKeyPress(char) {

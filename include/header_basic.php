@@ -14,7 +14,8 @@ $title = "FT - Film Reviews and Computer Games";
   <!--
   <script src="./js/core.js?<?php// print substr( md5(rand()), 0, 7); ?>" type="text/javascript" charset="utf-8"></script>
   -->
-  <script src="./js/code-do-not-upload.js?<?php print substr( md5(rand()), 0, 7); ?>" type="text/javascript" charset="utf-8"></script>  
+  <script src="./js/code-do-not-upload.js?<?php print substr( md5(rand()), 0, 7); ?>" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/dialogue.js?<?php print substr( md5(rand()), 0, 7); ?>" type="text/javascript" charset="utf-8"></script>  
   <script src="./js/buzz.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="./js/game.js"></script>
 </head>
