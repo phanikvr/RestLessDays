@@ -159,7 +159,7 @@ input[type=button]:hover {
 #speech_bubble_1a {
   height: 120px;
   width: 150px;
-  font-size: 14px;
+  font-size: 12px;
   margin-left:24px;
   margin-top:118px;
   border: 1px solid #86826C;
@@ -172,7 +172,6 @@ input[type=button]:hover {
 #speech_bubble_1b {
   height: 2px;
   width: 10px;
-  font-size: 14px;
   margin-left:24px;
   margin-top:249px;
   border-bottom-style:none;
@@ -181,12 +180,10 @@ input[type=button]:hover {
   padding: 5px;
   position: absolute;
   z-index:2;
-  color:#86826C;
 }
 #speech_bubble_1c {
   height: 2px;
   width: 131px;
-  font-size: 14px;
   margin-left: 46px;
   margin-top:249px;
   border-bottom-style:none;
@@ -195,13 +192,12 @@ input[type=button]:hover {
   padding: 5px;
   position: absolute;
   z-index:2;
-  color:#86826C;
 }
 
 #speech_bubble_2a {
   height: 120px;
   width: 150px;
-  font-size: 14px;
+  font-size: 12px;
   margin-left:212px;
   margin-top:118px;
   border: 1px solid #86826C;
@@ -214,7 +210,6 @@ input[type=button]:hover {
 #speech_bubble_2b {
   height: 2px;
   width: 10px;
-  font-size: 14px;
   margin-left:212px;
   margin-top:249px;
   border-bottom-style:none;
@@ -223,12 +218,10 @@ input[type=button]:hover {
   padding: 5px;
   position: absolute;
   z-index:2;
-  color:#86826C;
 }
 #speech_bubble_2c {
   height: 2px;
   width: 131px;
-  font-size: 14px;
   margin-left:233px;
   margin-top:249px;
   border-bottom-style:none;
@@ -237,7 +230,6 @@ input[type=button]:hover {
   padding: 5px;
   position: absolute;
   z-index:2;
-  scolor:#86826C;
 }
 
 .dark_green {

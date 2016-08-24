@@ -59,8 +59,10 @@ function channel3Content() {
 }
 */
 
-String.prototype.capitalize = function() {
-    return string[0].toUpperCase() + string.substring(1)
+function ucwords(str) {
+    return (str + '').replace(/^([a-z])|\s+([a-z])/g, function ($1) {
+        return $1.toUpperCase();
+    });
 }
 
 /* CLASS: commandPrompt */
@@ -298,8 +300,8 @@ $(document).ready(function() {
     commandPrompt.start();
 
     // capitalize() NOT working.
-    $('#speech_bubble_2a').html(Object.keys(dialogue[1][1]) + ': <b>' + dialogue[1][1]['roy'] + '</b>');
-    $('#speech_bubble_1a').html(Object.keys(dialogue[1][2]) + ': <b>' + dialogue[1][2]['cliff'] + '</b>');
+    $('#speech_bubble_2a').html('<b>' + ucwords(Object.keys(dialogue[1][1])) + '</b>: ' + dialogue[1][1]['roy']);
+    $('#speech_bubble_1a').html('<b>' + ucwords(Object.keys(dialogue[1][8])) + '</b>: ' + dialogue[1][8]['cliff']);
 
   } else if(document.location == 'http://dev.filmtronic.com/the-restless-days/?payment=cancelled' ||
     document.location == 'http://www.filmtronic.com/the-restless-days/?payment=cancelled') {

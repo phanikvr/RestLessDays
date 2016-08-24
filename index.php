@@ -7,6 +7,11 @@ $app_title = "F T - P l a y e r";
 include("include/header_basic.php");
 
 echo "http referer:" . $_SERVER["HTTP_REFERER"] . "<br />";
+
+echo "Post:";
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
 ?>
 <!--
 <h1 style="text-align: center">S I T E  &nbsp;U N D E R &nbsp;C O N S T R U C T I O N</h1>
