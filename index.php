@@ -26,13 +26,13 @@ echo "</pre>";
     </div>
     <div id="gui" class="channel">
       <!-- The Canvas width/height can shrink for external website integration -->
-      <div id="speech_bubble_2b"></div>
-      <div id="speech_bubble_2c"></div>
-      <div id="speech_bubble_2a">char: <b>test</b></div>
+      <div id="speech_bubble_2b" class="sb"></div>
+      <div id="speech_bubble_2c" class="sb"></div>
+      <div id="speech_bubble_2a" class="sb"></div>
     
-      <div id="speech_bubble_1b"></div>
-      <div id="speech_bubble_1c"></div>
-      <div id="speech_bubble_1a">char: <b>test</b></div>
+      <div id="speech_bubble_1b" class="sb"></div>
+      <div id="speech_bubble_1c" class="sb"></div>
+      <div id="speech_bubble_1a" class="sb"></b></div>
 
       <!-- <div style="height: 4px;font-size: 14px;width: 10px;margin-left:10px;margin-top:240px;border: 1px solid #86826C;padding: 5px;position: absolute;z-index:2;color:#86826C;"></div>-->
       <canvas width="400" height="400" id="canvas_set"></canvas>  

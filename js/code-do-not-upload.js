@@ -311,8 +311,8 @@ $(document).ready(function() {
     commandPrompt.start();
 
     // capitalize() NOT working.
-    $('#speech_bubble_2a').html('<b>' + ucwords(Object.keys(dialogue[1][1])) + '</b>: ' + dialogue[1][1]['roy']);
-    $('#speech_bubble_1a').html('<b>' + ucwords(Object.keys(dialogue[1][2])) + '</b>: ' + dialogue[1][2]['cliff']);
+    //$('#speech_bubble_2a').html('<b>' + ucwords(Object.keys(dialogue[1][1])) + '</b>: ' + dialogue[1][1]['roy']);
+    //$('#speech_bubble_1a').html('<b>' + ucwords(Object.keys(dialogue[1][2])) + '</b>: ' + dialogue[1][2]['cliff']);
 
   } else if(document.location == 'http://dev.filmtronic.com/the-restless-days/?payment=cancelled' ||
     document.location == 'http://www.filmtronic.com/the-restless-days/?payment=cancelled') {

@@ -156,6 +156,10 @@ input[type=button]:hover {
   display: none;
 }
 
+.sb {
+  display: none;
+}
+
 #speech_bubble_1a {
   height: 120px;
   width: 150px;
