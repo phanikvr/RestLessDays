@@ -540,6 +540,7 @@ $(document).ready(function() {
 
         key = keys_pressed[index][1];
 
+        /*
         if(talk_key_char_sb[key] != undefined) {
           
           if(current_key != key) {
@@ -560,6 +561,7 @@ $(document).ready(function() {
         } else {
           $('.sb').css('display','none');
         }
+        */
 
         /* 
         This is the best way to pass a variable to a Timeout function.
