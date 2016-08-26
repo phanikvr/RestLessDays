@@ -50,4 +50,4 @@ dialogue[1][23]['roy']   = "Hey, you'll bounce back Cliff. These things happen. 
 dialogue[1][24] = [];
 dialogue[1][24]['cliff'] = "I don't know anymore. I guess so.";
 dialogue[1][25] = [];
-dialogue[1][25]['roy'] = "Your back and that's the.";
+dialogue[1][25]['roy'] = "Your back and that's the main thing.";

@@ -540,24 +540,26 @@ $(document).ready(function() {
 
         key = keys_pressed[index][1];
 
-        /*
         if(talk_key_char_sb[key] != undefined) {
+          
           if(current_key != key) {
             current_key = key;
-          }          }
-
+          }
           char_name = Object.keys(talk_key_char_sb[key]);
           sb_no = talk_key_char_sb[key][char_name];
           line = dialogue[1][dg_no][char_name];
           if(line != undefined) {
-            $('.sb').css('display','none');
             $('#speech_bubble_' + sb_no + 'a').html('<b>' + ucwords(char_name) + '</b>: ' + line);
             $("[id^='speech_bubble_" + sb_no + "']").css('display','block');
           }
-
+          //DEBUG
+          //alert(dg_no);
           dg_no++;
+
+
+        } else {
+          $('.sb').css('display','none');
         }
-        */
 
         /* 
         This is the best way to pass a variable to a Timeout function.
