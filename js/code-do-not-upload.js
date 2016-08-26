@@ -47,6 +47,15 @@ talk_key_char_sb[9] = []
 talk_key_char_sb[9]['mimi'] = 3;
 
 function simulateKeyPress(vars) {
+
+  /*
+  //DEBUG - OFF
+  if(vars['line'] != undefined) {
+    $('#speech_bubble_' + vars['sb_no'] + 'a').html(vars['sb_html']);
+    $("[id^='speech_bubble_" + vars['sb_no'] + "']").css('display','block');
+  }
+  */
+
   e = jQuery.Event("keydown");
   e.which = vars['key'];
   e.keyCode = vars['key'];
@@ -521,10 +530,13 @@ $(document).ready(function() {
       keys_pressed = JSON.parse(keys_pressed);
 
       sb_no = 0;
-      char_name = '';
+      sb_html = '';
+      line = '';
       dg_no = 1;
+      char_name = '';
       current_key = 0;
-      for(index = 0; index < keys_pressed.length; index++) {  	  
+      for(index = 0; index < keys_pressed.length; index++) { 
+ 	  
     	  /* Initial Delay */
         delay = -2800;
 
@@ -536,22 +548,18 @@ $(document).ready(function() {
         key = keys_pressed[index][1];
 
         /*
+        // DEBUG - OFF
         if(talk_key_char_sb[key] != undefined) {
-          
-          if(current_key != key) {
-            current_key = key;
-          }
-          char_name = Object.keys(talk_key_char_sb[key]);
-          sb_no = talk_key_char_sb[key][char_name];
-          line = dialogue[1][dg_no][char_name];
-          if(line != undefined) {
-            $('#speech_bubble_' + sb_no + 'a').html('<b>' + ucwords(char_name) + '</b>: ' + line);
-            $("[id^='speech_bubble_" + sb_no + "']").css('display','block');
-          }
-          //DEBUG
-          //alert(dg_no);
-          dg_no++;
 
+          char_name = Object.keys(talk_key_char_sb[key]);
+          
+          sb_no = talk_key_char_sb[key][char_name];
+
+          line = dialogue[1][dg_no][char_name];
+
+          sb_html = '<b>' + ucwords(char_name) + '</b>: ' + line;
+
+          dg_no++;
 
         } else {
           $('.sb').css('display','none');
@@ -568,6 +576,9 @@ $(document).ready(function() {
         */
         vars = [];
         vars['key'] = key;
+        vars['line'] = line;
+        vars['sb_no'] = sb_no;
+        vars['sb_html'] = sb_html;
     	  setTimeout(simulateKeyPress, global_time, vars);
 
     	}	
