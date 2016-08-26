@@ -38,10 +38,13 @@ var sets;
 // The command Prompt
 var commandPrompt;
 // Maps talk command key and character name.
-var talk_key_char_name = [];
-talk_key_char_name[86] = 'roy';
-talk_key_char_name[18] = 'cliff';
-talk_key_char_name[9] = 'mimi';
+var talk_key_char_sb = [];
+talk_key_char_sb[86] = [];
+talk_key_char_sb[86]['roy'] = 2;
+talk_key_char_sb[18] = [];
+talk_key_char_sb[18]['cliff'] = 1;
+talk_key_char_sb[9] = []
+talk_key_char_sb[9]['mimi'] = 3;
 
 function simulateKeyPress(vars) {
   e = jQuery.Event("keydown");
@@ -537,21 +540,24 @@ $(document).ready(function() {
 
         key = keys_pressed[index][1];
 
-        if(talk_key_char_name[key] != undefined) {
+        /*
+        if(talk_key_char_sb[key] != undefined) {
           if(current_key != key) {
             current_key = key;
-            dg_no++;
-          }
+          }          }
 
-          char_name = Object.keys(talk_key_char_name[key]);
-          sb_no = talk_key_char_name[key][char_name];
+          char_name = Object.keys(talk_key_char_sb[key]);
+          sb_no = talk_key_char_sb[key][char_name];
           line = dialogue[1][dg_no][char_name];
           if(line != undefined) {
             $('.sb').css('display','none');
             $('#speech_bubble_' + sb_no + 'a').html('<b>' + ucwords(char_name) + '</b>: ' + line);
             $("[id^='speech_bubble_" + sb_no + "']").css('display','block');
           }
+
+          dg_no++;
         }
+        */
 
         /* 
         This is the best way to pass a variable to a Timeout function.
