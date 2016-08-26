@@ -45,11 +45,32 @@ talk_key_char_sb[18] = [];
 talk_key_char_sb[18]['cliff'] = 1;
 talk_key_char_sb[9] = []
 talk_key_char_sb[9]['mimi'] = 3;
-
+// The Current Talk Command Key
+current_talk_key = 0;
+// The Current Dialogue Number of the Episode.
+dg_no = 1;
+ 
 function simulateKeyPress(vars) {
 
+  /* 
+  Dialogue Functionality must be in this Key Press function
+  because it must be in sync with action key.
+  */
   if(talk_key_char_sb[vars['key']] != undefined) {
-    alert(vars['key'])
+    if(vars['key'] != current_talk_key) {
+      current_talk_key = vars['key'];
+      $('.sb').css('display','none');
+      char_name = Object.keys(talk_key_char_sb[vars['key']]);
+      sb_no = talk_key_char_sb[vars['key']][char_name];
+      line = dialogue[1][dg_no][char_name];
+      sb_html = '<b>' + ucwords(char_name) + '</b>: ' + line;
+      $('#speech_bubble_' + sb_no + 'a').html(sb_html);
+      $("[id^='speech_bubble_" + sb_no + "']").css('display','block');
+      dg_no++;
+    }
+  } else {
+    $('.sb').css('display','none');
+    current_talk_key = 0;
   }
 
   /*
@@ -526,7 +547,7 @@ $(document).ready(function() {
       firstScene();  
       
       //DEBUG
-      //episode1Sound.play();
+      episode1Sound.play();
 
       //alert(JSON.stringify(keys_pressed));
       //SAVED FIRST EPISODE COMMANDS
@@ -581,9 +602,11 @@ $(document).ready(function() {
         */
         vars = [];
         vars['key'] = key;
+        /*
         vars['line'] = line;
         vars['sb_no'] = sb_no;
         vars['sb_html'] = sb_html;
+        */
     	  setTimeout(simulateKeyPress, global_time, vars);
 
     	}	
