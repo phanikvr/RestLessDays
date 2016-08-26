@@ -417,6 +417,7 @@ $(document).ready(function() {
       $(this).val('RECORD');
       $('#play_back').css('display','inline-block');
       $('#play_back').val('PLAY');
+      // Save the below to a js file.
       alert(JSON.stringify(keys_pressed));
     }
   });
