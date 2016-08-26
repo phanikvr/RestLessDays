@@ -38,12 +38,15 @@ var sets;
 // The command Prompt
 var commandPrompt;
 
-function simulateKeyPress(char) {
+function simulateKeyPress(vars) {
   e = jQuery.Event("keydown");
-  e.which = char;
-  e.keyCode = char;
+  e.which = vars['key'];
+  e.keyCode = vars['key'];
   // Canvas character
   $("#canvas_set").trigger(e);
+
+  /* Dialogue Functionality has to be real time. */
+
 }
 
 
@@ -530,7 +533,10 @@ $(document).ready(function() {
         It's neater and probably the only way it works.
         */
         key = keys_pressed[index][1];
-    	  setTimeout(simulateKeyPress, global_time, key);
+
+        vars = [];
+        vars['key'] = key;
+    	  setTimeout(simulateKeyPress, global_time, vars);
 
     	}	
 
