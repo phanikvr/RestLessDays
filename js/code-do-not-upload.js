@@ -48,6 +48,10 @@ talk_key_char_sb[9]['mimi'] = 3;
 
 function simulateKeyPress(vars) {
 
+  if(talk_key_char_sb[vars['key']] != undefined) {
+    alert(vars['key'])
+  }
+
   /*
   //DEBUG - OFF
   if(vars['line'] != undefined) {
@@ -563,7 +567,7 @@ $(document).ready(function() {
           dg_no++;
 
         } else {
-          $('.sb').css('display','none');
+          $('.sb').css('display','nonoe');
         }
         */
 
