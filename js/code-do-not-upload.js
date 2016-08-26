@@ -504,7 +504,9 @@ $(document).ready(function() {
       episode1Sound.load();
       $('#canvas_set').css('background-image', 'url("' + sets[0] + '")');
       firstScene();  
-      episode1Sound.play();
+      
+      //DEBUG
+      //episode1Sound.play();
 
       //alert(JSON.stringify(keys_pressed));
       //SAVED FIRST EPISODE COMMANDS
