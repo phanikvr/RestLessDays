@@ -554,7 +554,7 @@ $(document).ready(function() {
       firstScene();  
       
       //DEBUG
-      episode1Sound.play();
+      //episode1Sound.play();
 
       //alert(JSON.stringify(keys_pressed));
       //SAVED FIRST EPISODE COMMANDS
