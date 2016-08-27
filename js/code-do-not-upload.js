@@ -37,18 +37,20 @@ var dir_props = './images/props/';
 var sets;
 // The command Prompt
 var commandPrompt;
-// Maps talk command key and character name.
-// Because it's an associative array, to test
-// for key you have to do surround number
-// with single quotes like a string
-// i.e. $.inArray('18', talk_key_chas_sb)
-var talk_key_char_sb = [];
-talk_key_char_sb[86] = [];
-talk_key_char_sb[86]['roy'] = 2;
-talk_key_char_sb[18] = [];
-talk_key_char_sb[18]['cliff'] = 1;
-talk_key_char_sb[9] = []
-talk_key_char_sb[9]['mimi'] = 3;
+// Maps Char Name to talk command key and 
+// Speech Bubble Number Id.
+// 
+var char_talk_key_sb = [];
+char_talk_key_sb['roy'] = [];
+char_talk_key_sb['roy']['talk_key'] = 86;
+char_talk_key_sb['roy']['sb_no'] = 2;
+char_talk_key_sb['cliff'] = [];
+char_talk_key_sb['cliff']['talk_key'] = 18;
+char_talk_key_sb['cliff']['sb_no'] = 1;  
+char_talk_key_sb['mimi'] = [];
+char_talk_key_sb['mimi']['talk_key'] = 9;
+char_talk_key_sb['mimi']['sb_no'] = 3;  
+
 // The Current Talk Command Key from action array.
 var current_talk_key = 0;
 // The Current Dialogue Number of the Episode.
@@ -60,14 +62,22 @@ function simulateKeyPress(key) {
   Dialogue Functionality must be in this Key Press function
   because it must be in sync with action key.
   */
-  if(talk_key_char_sb[key] != undefined && talk_key_char_sb[key] != 'undefined')  {
+  sb_no = 0;
+  for (var i in char_talk_key_sb) {
+    if(key == char_talk_key_sb[i]['talk_key']) {
+      char_name = i;
+      sb_no = char_talk_key_sb[i]['sb_no']; 
+      show_dialogue = 1;
+      break;
+    }
+  }
+
+  if(sb_no) {
 
     if(key != current_talk_key) {
       //alert(dg_no + ':' + key);
       current_talk_key = key;
       $('.sb').css('display','none');
-      char_name = Object.keys(talk_key_char_sb[key]);
-      sb_no = talk_key_char_sb[key][char_name];
       line = dialogue[1][dg_no][char_name];
       sb_html = '<b>' + ucwords(char_name) + '</b>: ' + line;
       $('#speech_bubble_' + sb_no + 'a').html(sb_html);
