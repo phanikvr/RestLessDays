@@ -156,6 +156,10 @@ input[type=button]:hover {
   display: none;
 }
 
+#record {
+  display: none;
+}
+
 .sb {
   display: none;
 }
