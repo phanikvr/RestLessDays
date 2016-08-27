@@ -590,8 +590,7 @@ $(document).ready(function() {
     	  setTimeout(simulateKeyPress, global_time, key, keys_pressed[index][0]);
 
     	}
-      // Finally, remove all speech bubbles for the end.
-      $('.sb').css('display','none');	
+      // NOTE: If there is time find out how to remove all speech bubbles at the end.
 
     }
     
