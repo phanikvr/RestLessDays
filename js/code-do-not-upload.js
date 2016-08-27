@@ -650,8 +650,6 @@ $(document).keydown(function(e) {
     if($('#prompt').val().toLowerCase() == 'play the restless days 1'
        && commandPrompt.commandFound('play the restless days 1') 
        && e.which == 13) {
-      $('command_play').css('display','block');
-      $('line_off').css('display','block');
       setTimeout(function() { $('#play_back').click() }, 1000);
     }
   }
