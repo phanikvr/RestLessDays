@@ -67,7 +67,6 @@ function simulateKeyPress(key) {
     if(key == char_talk_key_sb[i]['talk_key']) {
       char_name = i;
       sb_no = char_talk_key_sb[i]['sb_no']; 
-      show_dialogue = 1;
       break;
     }
   }
