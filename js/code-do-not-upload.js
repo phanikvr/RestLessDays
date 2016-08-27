@@ -38,6 +38,10 @@ var sets;
 // The command Prompt
 var commandPrompt;
 // Maps talk command key and character name.
+// Because it's an associative array, to test
+// for key you have to do surround number
+// with single quotes like a string
+// i.e. $.inArray('18', talk_key_chas_sb)
 var talk_key_char_sb = [];
 talk_key_char_sb[86] = [];
 talk_key_char_sb[86]['roy'] = 2;
@@ -50,18 +54,20 @@ var current_talk_key = 0;
 // The Current Dialogue Number of the Episode.
 var dg_no = 1;
  
-function simulateKeyPress(vars) {
+function simulateKeyPress(key) {
 
   /* 
   Dialogue Functionality must be in this Key Press function
   because it must be in sync with action key.
   */
-  if(talk_key_char_sb[vars['key']] != undefined) {
-    if(vars['key'] != current_talk_key) {
-      current_talk_key = vars['key'];
+  if(talk_key_char_sb[key] != undefined && talk_key_char_sb[key] != 'undefined')  {
+
+    if(key != current_talk_key) {
+      //alert(dg_no + ':' + key);
+      current_talk_key = key;
       $('.sb').css('display','none');
-      char_name = Object.keys(talk_key_char_sb[vars['key']]);
-      sb_no = talk_key_char_sb[vars['key']][char_name];
+      char_name = Object.keys(talk_key_char_sb[key]);
+      sb_no = talk_key_char_sb[key][char_name];
       line = dialogue[1][dg_no][char_name];
       sb_html = '<b>' + ucwords(char_name) + '</b>: ' + line;
       $('#speech_bubble_' + sb_no + 'a').html(sb_html);
@@ -72,6 +78,7 @@ function simulateKeyPress(vars) {
     $('.sb').css('display','none');
     current_talk_key = 0;
   }
+  
 
   /*
   //DEBUG - OFF
@@ -82,8 +89,8 @@ function simulateKeyPress(vars) {
   */
 
   e = jQuery.Event("keydown");
-  e.which = vars['key'];
-  e.keyCode = vars['key'];
+  e.which = key;
+  e.keyCode = key;
   // Canvas character
   $("#canvas_set").trigger(e);
 
@@ -575,14 +582,7 @@ $(document).ready(function() {
         Notice how keys_pressed[index][1] needs to be converted to one variable 'key'
         It's neater and probably the only way it works.
         */
-        vars = [];
-        vars['key'] = key;
-        /*
-        vars['line'] = line;
-        vars['sb_no'] = sb_no;
-        vars['sb_html'] = sb_html;
-        */
-    	  setTimeout(simulateKeyPress, global_time, vars);
+    	  setTimeout(simulateKeyPress, global_time, key);
 
     	}	
 
