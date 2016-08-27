@@ -13,13 +13,8 @@ echo "<pre>";
 print_r($_POST);
 echo "</pre>";
 ?>
-<!--
-<h1 style="text-align: center">S I T E  &nbsp;U N D E R &nbsp;C O N S T R U C T I O N</h1>
---
-<!--
-./images/chars/phil/front-standing-mouth-closed.png
-./images/chars/ledge/front-standing-mouth-closed.png
--->
+<input id="play_back" type="button" value="PLAY" />
+<input id="record" type="button" value="RECORD" />
 <div id="screen">
     
     <div id="channel_off" class="channel">
@@ -130,10 +125,7 @@ echo "</pre>";
       </form>
     </div>
 
-
-
 </div>
-<input id="play_back" type="button" value="PLAY" />
 <?php
 include("include/footer_basic.php");
 ?>
