@@ -45,10 +45,10 @@ talk_key_char_sb[18] = [];
 talk_key_char_sb[18]['cliff'] = 1;
 talk_key_char_sb[9] = []
 talk_key_char_sb[9]['mimi'] = 3;
-// The Current Talk Command Key
-current_talk_key = 0;
+// The Current Talk Command Key from action array.
+var current_talk_key = 0;
 // The Current Dialogue Number of the Episode.
-dg_no = 1;
+var dg_no = 1;
  
 function simulateKeyPress(vars) {
 
@@ -66,7 +66,7 @@ function simulateKeyPress(vars) {
       sb_html = '<b>' + ucwords(char_name) + '</b>: ' + line;
       $('#speech_bubble_' + sb_no + 'a').html(sb_html);
       $("[id^='speech_bubble_" + sb_no + "']").css('display','block');
-      dg_no++;
+      dg_no++;  
     }
   } else {
     $('.sb').css('display','none');
@@ -555,12 +555,6 @@ $(document).ready(function() {
       keys_pressed = JSON.stringify(keys_pressed);
       keys_pressed = JSON.parse(keys_pressed);
 
-      sb_no = 0;
-      sb_html = '';
-      line = '';
-      dg_no = 1;
-      char_name = '';
-      current_key = 0;
       for(index = 0; index < keys_pressed.length; index++) { 
  	  
     	  /* Initial Delay */
@@ -572,25 +566,6 @@ $(document).ready(function() {
     	  global_time += delay;
 
         key = keys_pressed[index][1];
-
-        /*
-        // DEBUG - OFF
-        if(talk_key_char_sb[key] != undefined) {
-
-          char_name = Object.keys(talk_key_char_sb[key]);
-          
-          sb_no = talk_key_char_sb[key][char_name];
-
-          line = dialogue[1][dg_no][char_name];
-
-          sb_html = '<b>' + ucwords(char_name) + '</b>: ' + line;
-
-          dg_no++;
-
-        } else {
-          $('.sb').css('display','nonoe');
-        }
-        */
 
         /* 
         This is the best way to pass a variable to a Timeout function.
