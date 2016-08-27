@@ -77,7 +77,7 @@ function simulateKeyPress(key,time) {
       current_talk_key = key;
       $('.sb').css('display','none');
       line = dialogue[1][dg_no][char_name];
-      sb_html = '<b>' + ucwords(char_name) + '</b>: ' + line;
+      sb_html = '' + ucwords(char_name) + ': <b>' + line + '</b>';
       $('#speech_bubble_' + sb_no + 'a').html(sb_html);
       $("[id^='speech_bubble_" + sb_no + "']").css('display','block');
       dg_no++;  
@@ -369,7 +369,7 @@ $(document).ready(function() {
   sound_file = './sounds/on_the_town_proud_music_preview';
   var episode1Sound = new buzz.sound( sound_file, {
     formats: [ "mp3" ],
-    volume: 100
+    volume: 10
   });
     
   /* Create the Canvas character */
