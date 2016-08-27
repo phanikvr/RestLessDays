@@ -56,7 +56,7 @@ var current_talk_key = 0;
 // The Current Dialogue Number of the Episode.
 var dg_no = 1;
  
-function simulateKeyPress(key) {
+function simulateKeyPress(key,time) {
 
   /* 
   Dialogue Functionality must be in this Key Press function
@@ -72,7 +72,6 @@ function simulateKeyPress(key) {
   }
 
   if(sb_no) {
-
     if(key != current_talk_key) {
       //alert(dg_no + ':' + key);
       current_talk_key = key;
@@ -591,7 +590,7 @@ $(document).ready(function() {
         Notice how keys_pressed[index][1] needs to be converted to one variable 'key'
         It's neater and probably the only way it works.
         */
-    	  setTimeout(simulateKeyPress, global_time, key);
+    	  setTimeout(simulateKeyPress, global_time, key, keys_pressed[index][0]);
 
     	}	
 
