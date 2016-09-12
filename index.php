@@ -6,12 +6,14 @@ $app_title = "F T - P l a y e r";
 #include("include/general.inc.php");
 include("include/header_basic.php");
 
+/*
+// ALERT: Perhaps have some sort of hack prevention.
 echo "http referer:" . $_SERVER["HTTP_REFERER"] . "<br />";
-
 echo "Post:";
 echo "<pre>";
 print_r($_POST);
 echo "</pre>";
+*/
 ?>
 <input id="play_back" type="button" value="PLAY" />
 <input id="record" type="button" value="RECORD" />
