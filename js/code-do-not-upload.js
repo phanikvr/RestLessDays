@@ -354,8 +354,6 @@ $(document).ready(function() {
 
   //Create a Command Prompt
   commandPrompt = new commandPrompt();
-
-  alert(document.location.href);
   
   if(document.location.href.indexOf('payment=success') != 1) {
     commandPrompt.start();  
