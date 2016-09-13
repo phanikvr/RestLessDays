@@ -11,15 +11,14 @@ $title = "FT - Film Reviews and Computer Games";
   <meta name="description" content="Film Reviews and Computer Games" />
   <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen" />
   <script src="./js/jquery-2.1.1.min.js"></script>
-  <!--
-  <script src="./js/core.js?<?php// print substr( md5(rand()), 0, 7); ?>" type="text/javascript" charset="utf-8"></script>
-  --> 
+  <script src="./js/core.js?<?php print substr( md5(rand()), 0, 7); ?>" type="text/javascript" charset="utf-8"></script>
   <script src="./js/dialogue.js?<?php print substr( md5(rand()), 0, 7); ?>" type="text/javascript" charset="utf-8"></script>  
-  <script src="./js/code-do-not-upload.js?<?php print substr( md5(rand()), 0, 7); ?>" type="text/javascript" charset="utf-8"></script>
   <script src="./js/buzz.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="./js/game.js"></script>
 </head>
 <body>
+<?php include_once(".././analyticstracking.php") ?>
+
 <header style="background-color:#EAEAEA;padding: 4px; height: 30px">
   <a name="top"></a>
   <a style="float: left" id="logo" href="/"><img width="30" src="./images/logo_small_green_navy_filmtronic.png" /></a>
