@@ -354,14 +354,18 @@ $(document).ready(function() {
 
   //Create a Command Prompt
   commandPrompt = new commandPrompt();
+
+  alert(document.location.href);
   
-  if(document.location == 'http://dev.filmtronic.com/the-restless-days/?payment=success' ||
-    document.location == 'http://www.filmtronic.com/the-restless-days/?payment=success') {
-    commandPrompt.start();
+  if(document.location.href.indexOf('payment=success') != 1) {
+    commandPrompt.start();  
+  }
+  /*
   } else if(document.location == 'http://dev.filmtronic.com/the-restless-days/?payment=cancelled' ||
     document.location == 'http://www.filmtronic.com/the-restless-days/?payment=cancelled') {
     $('#power_button').val('Try Again');
   }
+  */
   	
   // FORMAT is MP3 for now on.
   // Review Sound File Below (could be too funny with dialogue)
