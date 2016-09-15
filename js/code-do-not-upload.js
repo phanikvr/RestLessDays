@@ -71,6 +71,7 @@ function simulateKeyPress(key,time) {
     }
   }
 
+  /* ALERT: The dialogue isn't working properly on the LIVE server. */
   if(sb_no) {
     if(key != current_talk_key) {
       //alert(dg_no + ':' + key);
