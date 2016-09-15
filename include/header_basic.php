@@ -3,6 +3,9 @@
  * The Header Basic Include File (a bare necessities header).
  */
 $title = "FT - Film Reviews and Computer Games";
+# ALERT: The manifest approach caches HTML, JS and CSS files.
+# Didn't end up using it as it brought back an old server version.
+# manifest="the-restless-days.appcache"
 ?>
 <!DOCTYPE html>
 <html>
