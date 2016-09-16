@@ -40,7 +40,7 @@ input[type=button]:hover {
   background-position: 25% 10%;
   background-size:400%;
   */
-  zoom: 200%;
+  zoom: 100%;
   position: relative;
   /* z-index: -1; */
 }
