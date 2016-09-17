@@ -32,12 +32,14 @@ $title = "FT - Film Reviews and Computer Games";
   <a style="float: left" id="logo" href="/"><img width="30" src="./images/logo_small_green_navy_filmtronic.png" /></a>
   <a id="top_logo_text" href="/"><img border="0" width="150" style="float: left;vertical-align: top; margin-left: 10px;" src="/images/logo_text_navy_green_filmtronic.png" /></a>
       <div id="tm_header_symbol">&reg;</div>
-  <div class="logo_small_text">&nbsp;&nbsp;Film Reviews and Computer Games</div>
+  <div class="logo_small_text">&nbsp;&nbsp;The Restless Days</div>
   &nbsp;&nbsp;
+  <?php /* ?>
   <div class="top_links">
     <?php if($_SERVER["PHP_SELF"] == "../about-us.php") { ?><b class="navy">About Us</b><?php } else {?><a href="../about-us.php">About Us</a><?php }?>
     &nbsp;&nbsp;
     <?php if($_SERVER["PHP_SELF"] == "../how-it-works.php") { ?><b class="navy">How it Works</b><?php } else {?><a href="../how-it-works.php">How it Works</a><?php }?>
   </div>
   <div class="app_title">&nbsp;&nbsp;<?php # print $title;?></div>
+  <? */?>
 </header>
