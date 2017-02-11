@@ -27,7 +27,7 @@ function drawInitialSetup() {
 	ctx.strokeStyle = "black";
 	var x = 150;
 	var y = 100;
-	var speed = 5;
+	var speed = 2;  // we can use decimal numbers to look more robustic.
 	var radius = 15;
 	ChaseeCircle = new Circle(radius, 0, x, y, "purple"); // for chase we dont need to set the speed, because it moved with key strokes.
 	ChaserCircle = new Circle(radius, speed, 0, 0, "orange"); // setting the chaser circle at one conrner, we can change dynamically.
@@ -76,17 +76,17 @@ function draw() {
 	ChaserCircle.update();	
 	if (ChaseeCircle.xPos > ChaserCircle.xPos && ChaseeCircle.yPos > ChaserCircle.yPos)
 	{
-		ChaserCircle.xPos += 2;
-		ChaserCircle.yPos += 2;
+		ChaserCircle.xPos += ChaserCircle.speed;
+		ChaserCircle.yPos += ChaserCircle.speed;
 	}
 	else if (ChaseeCircle.xPos > ChaserCircle.xPos && ChaseeCircle.yPos <= ChaserCircle.yPos)
-		ChaserCircle.xPos += 2;
+		ChaserCircle.xPos += ChaserCircle.speed;
 	else if (ChaseeCircle.xPos <= ChaserCircle.xPos && ChaseeCircle.yPos > ChaserCircle.yPos)
-		ChaserCircle.yPos += 2;	
+		ChaserCircle.yPos += ChaserCircle.speed;	
 	else if (ChaseeCircle.yPos < ChaserCircle.yPos)
-		ChaserCircle.yPos -= 2;	
+		ChaserCircle.yPos -= ChaserCircle.speed;	
 	else if (ChaseeCircle.xPos < ChaserCircle.xPos)
-		ChaserCircle.xPos -= 2;	
+		ChaserCircle.xPos -= ChaserCircle.speed;	
 	
     var step = requestAnimationFrame(() => {
 			draw();
