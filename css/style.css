@@ -34,6 +34,11 @@ input[type=button]:hover {
   margin-right: auto;
 */
 
+canvas{
+	position:absolute;
+    left:0px;
+    top:0px;
+}
 #canvas_set {
   display: block;
   /** Zoom facility 
