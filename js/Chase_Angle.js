@@ -52,7 +52,7 @@ function Ship(shape, bulletImageName)
 	this.speed = shape.speed;
 	this.dx = shape.dx;
 	this.dy = shape.dy;	
-	this.rotateAngle =  function (angle) {
+	this.rotateAngle =  function (angle) {				
 		this.Shape.rotateAngle = angle;
 	}
 	this.Bullet = null; // bullet loads only when user hits a spacebar key
@@ -68,19 +68,19 @@ Canvas.prototype.Setup = function(ship) {
 Ship.prototype.update = function(canvas) {
 	canvas.ctx.drawImage(this.Shape.Image(), this.xPos, this.yPos, this.Shape.height, this.Shape.width);
 	//console.log('shipname: ' + this.Shape.imageName + ',  angle:' + this.Shape.rotateAngle);
-	if (this.Bullet) // if bullet is loaded fire only then.
-	{
-		this.fireBullet(BulletCanvas);
-		if(this.Bullet.rotateAngle == 360 && this.Bullet.xPos < BulletCanvas.canvas.width)			
-			this.Bullet.xPos +=  this.Bullet.speed;	
-		else if (this.Bullet.rotateAngle == 180 && this.Bullet.xPos > -this.Bullet.width)		
-			this.Bullet.xPos -=  this.Bullet.speed;	
-		else if (this.Bullet.rotateAngle == 90 && this.Bullet.yPos  >  -this.Bullet.height)		
-			this.Bullet.yPos -=  this.Bullet.speed;
-		else if (this.Bullet.rotateAngle == 270 && this.Bullet.yPos <  BulletCanvas.canvas.height)		
-			this.Bullet.yPos +=  this.Bullet.speed;
-		else this.isFired = false;
-	}
+	// if (this.Bullet) // if bullet is loaded fire only then.
+	// {
+		// this.fireBullet(BulletCanvas);
+		// if(this.Bullet.rotateAngle == 360 && this.Bullet.xPos < BulletCanvas.canvas.width)			
+			// this.Bullet.xPos +=  this.Bullet.speed;	
+		// else if (this.Bullet.rotateAngle == 180 && this.Bullet.xPos > -this.Bullet.width)		
+			// this.Bullet.xPos -=  this.Bullet.speed;	
+		// else if (this.Bullet.rotateAngle == 90 && this.Bullet.yPos  >  -this.Bullet.height)		
+			// this.Bullet.yPos -=  this.Bullet.speed;
+		// else if (this.Bullet.rotateAngle == 270 && this.Bullet.yPos <  BulletCanvas.canvas.height)		
+			// this.Bullet.yPos +=  this.Bullet.speed;
+		// else this.isFired = false;
+	// }
 }
 
 Ship.prototype.fireBullet = function(canvas) {
