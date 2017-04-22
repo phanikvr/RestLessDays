@@ -71,25 +71,44 @@ Ship.prototype.update = function(canvas) {
 	if (this.Bullet) // if bullet is loaded fire only then.
 	{
 		this.fireBullet(BulletCanvas, this.Bullet.isFired);
-		if(this.Bullet.rotateAngle == 360 && (this.Bullet.xPos < ChaseeShip.xPos && this.Bullet.xPos < BulletCanvas.canvas.width))			
+		if(this.Bullet.rotateAngle == 360 && (this.Bullet.xPos < ChaseeShip.xPos && this.Bullet.xPos < BulletCanvas.canvas.width))
+		{			
 			this.Bullet.xPos +=  this.Bullet.speed;	
-		else if (this.Bullet.rotateAngle == 180 && this.Bullet.xPos > (ChaseeShip.xPos + ChaseeShip.Shape.width))	
+			this.Bullet2.xPos +=  this.Bullet2.speed;
+			this.Bullet2.yPos = this.Bullet.yPos + this.Shape.height - this.Bullet.height;
+		}
+		else if (this.Bullet.rotateAngle == 180 && this.Bullet.xPos > (ChaseeShip.xPos + ChaseeShip.Shape.width))
+		{
 			this.Bullet.xPos -=  this.Bullet.speed;	
-		else if (this.Bullet.rotateAngle == 90 && this.Bullet.yPos  >  -this.Bullet.height && this.Bullet.yPos  > ChaseeShip.yPos)		
+			this.Bullet2.xPos -=  this.Bullet2.speed;	
+			this.Bullet2.yPos = this.Bullet.yPos + this.Shape.height - this.Bullet.height;
+		}
+		else if (this.Bullet.rotateAngle == 90 && this.Bullet.yPos  >  -this.Bullet.height && this.Bullet.yPos  > ChaseeShip.yPos)
+		{			
 			this.Bullet.yPos -=  this.Bullet.speed;
+			this.Bullet2.yPos -=  this.Bullet2.speed;
+			this.Bullet2.xPos = this.Bullet.xPos + this.Shape.height - this.Bullet.height;
+		}
 		else if (this.Bullet.rotateAngle == 270 && (this.Bullet.yPos < ChaseeShip.yPos && this.Bullet.yPos <  BulletCanvas.canvas.height))	
+		{
 			this.Bullet.yPos +=  this.Bullet.speed;
+			this.Bullet2.yPos +=  this.Bullet2.speed;
+			this.Bullet2.xPos = this.Bullet.xPos + this.Shape.height - this.Bullet.height;
+		}
 		else 
 		{
 			this.isFired = false;
 			this.Bullet.xPos = -100;
 			this.Bullet.yPos = -100;
+			this.Bullet2.xPos = -100;
+			this.Bullet2.yPos = -100;
 		}
 	}
 }
 
 Ship.prototype.fireBullet = function(canvas, isFired) {
 		canvas.ctx.drawImage(this.Bullet.Image(), this.Bullet.xPos, this.Bullet.yPos, this.Bullet.height, this.Bullet.width);
+		canvas.ctx.drawImage(this.Bullet2.Image(), this.Bullet2.xPos, this.Bullet2.yPos, this.Bullet2.height, this.Bullet2.width);
 }
 
 // Ship.prototype.rotate = function(canvasContext, image, x, y, angle) { 
@@ -141,10 +160,9 @@ function doKeyDown(evt){
 			ChaseeShip.rotateAngle(360);
 			break;
 		case 32:
-			ChaserShip.Bullet = new Shape(50, 5, ChaserShip.xPos + (ChaserShip.Shape.height/2), ChaserShip.yPos + (ChaserShip.Shape.height/2), bulletImageDir, 'bullet', ChaserShip.Shape.rotateAngle, 30,30);
-			ChaserShip.Bullet.xPos -= ChaserShip.Bullet.height/2;
-			ChaserShip.Bullet.yPos -= ChaserShip.Bullet.height/2;
+			ChaserShip.Bullet = new Shape(50, 5, ChaserShip.xPos, ChaserShip.yPos, bulletImageDir, 'bullet', ChaserShip.Shape.rotateAngle, 30,30);			
 			ChaserShip.Bullet.isFired  = true;
+			ChaserShip.Bullet2 = new Shape(50, 5, ChaserShip.xPos, ChaserShip.yPos, bulletImageDir, 'bullet', ChaserShip.Shape.rotateAngle, 30,30);
 			break;
 	}	
 }
